@@ -21,13 +21,22 @@
     color:#2a1704;background:linear-gradient(135deg,#fff0c4,#f6cf72 40%,#e8a93d)}
   a.alt{color:var(--ink);background:transparent;border:2px solid rgba(246,210,127,.55)}
   a:focus,a:hover{outline:4px solid #fff;outline-offset:3px}
+  a.chosen{box-shadow:0 0 0 4px var(--orange)}
+  #auto{display:none;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center;margin:0 0 30px;padding:18px 26px;
+    border-radius:20px;background:rgba(255,143,31,.12);border:2px solid var(--orange);font-size:22px;font-weight:600;text-align:center}
+  #auto b{color:var(--gold)}
+  #auto button{font:inherit;font-weight:700;font-size:20px;padding:12px 26px;border-radius:999px;border:2px solid var(--gold);
+    background:transparent;color:var(--ink);cursor:pointer}
+  #auto button:focus{outline:4px solid #fff;outline-offset:3px}
   @media (max-width:820px){.grid{grid-template-columns:minmax(0,340px)}}
 </style>
 </head>
 <body>
   <h1>Yummy <span>TV meni</span></h1>
-  <p>Izaberite stranicu za ovaj televizor. <b>Live</b> = animacija uživo (najljepše). <b>Video</b> = ista stvar kao video, za slabije televizore.
-     Telefon / daljinski: strelice + OK.</p>
+  <p>Izaberite stranicu za ovaj televizor – samo jednom. Ovaj televizor će je zapamtiti i ubuduće je otvarati sam.
+     <b>Live</b> = animacija uživo (najljepše). <b>Video</b> = isto kao video, za slabije televizore. Daljinski: strelice + OK.</p>
+  <div id="auto"><span>Otvaram <b id="autoName"></b> za <b id="autoSec">8</b> s…</span>
+    <button id="change" type="button">Promijeni izbor</button></div>
   <div class="grid">
     <div class="tv"><h2>TV 1</h2><small>Palačinke &amp; Specijaliteti</small>
       <a href="tv1.html">Live</a><a class="alt" href="tv1-video.html">Video</a></div>
@@ -36,5 +45,45 @@
     <div class="tv"><h2>TV 3</h2><small>Napravi svoju palačinku</small>
       <a href="tv3.html">Live</a><a class="alt" href="tv3-video.html">Video</a></div>
   </div>
+<script>
+/* Each TV remembers which page it was given. Next time (e.g. after the TV is
+   switched on) this start page opens that page by itself after 8 seconds,
+   unless someone presses OK on "Promijeni izbor". */
+(function () {
+  var KEY = 'yummyTvPage', saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  var links = document.querySelectorAll('.grid a');
+  var NAMES = { 'tv1.html': 'TV 1 (Live)', 'tv2.html': 'TV 2 (Live)', 'tv3.html': 'TV 3 (Live)',
+                'tv1-video.html': 'TV 1 (Video)', 'tv2-video.html': 'TV 2 (Video)', 'tv3-video.html': 'TV 3 (Video)' };
+
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', function () {
+      try { localStorage.setItem(KEY, this.getAttribute('href')); } catch (e) {}
+    });
+    if (links[i].getAttribute('href') === saved) links[i].classList.add('chosen');
+  }
+
+  var choose = /[?&]izbor\b/.test(location.search);
+  if (!saved || !NAMES[saved] || choose) { links[0].focus(); return; }
+
+  var box = document.getElementById('auto'), sec = 8, timer;
+  document.getElementById('autoName').textContent = NAMES[saved];
+  box.style.display = 'flex';
+  var btn = document.getElementById('change');
+  btn.focus();
+  function cancel() {
+    clearInterval(timer);
+    box.style.display = 'none';
+    var c = document.querySelector('a.chosen') || links[0];
+    c.focus();
+  }
+  btn.addEventListener('click', cancel);
+  timer = setInterval(function () {
+    sec--;
+    document.getElementById('autoSec').textContent = sec;
+    if (sec <= 0) { clearInterval(timer); location.replace(saved); }
+  }, 1000);
+})();
+</script>
 </body>
 </html>

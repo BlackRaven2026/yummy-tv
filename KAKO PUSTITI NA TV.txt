@@ -44,16 +44,21 @@ STEP 3 – SET UP EACH TV (once per TV)
    keeps the 3 TVs in step.
 2. TV settings -> turn OFF sleep timer, auto power off, "no signal" standby
    and eco / power-saving standby.
-3. Install "Fully Kiosk Browser" (Google Play on the TV; if it is not in the
-   store, download the APK from fully-kiosk.com and install it from a USB
-   stick). Some features need a paid licence (a few euros per TV) –
-   check what is free before buying.
-4. In Fully Kiosk settings:
-     Start URL            -> that TV's address (tv1.html / tv2.html / tv3.html)
+3. Install "Fully Kiosk Browser" from the TV's app store (free; you do NOT
+   need the PLUS licence – just leave PLUS features switched off).
+4. Open Fully Kiosk. In its settings:
+     Start URL            -> https://blackraven2026.github.io/yummy-tv/
+                             (the SAME short address on all 3 TVs)
      Launch on boot       -> ON (the menu starts when the TV turns on)
      Keep screen on       -> ON
      Fullscreen / hide status & navigation bar -> ON
      Web content: Autoplay videos -> ON (needed for the video pages)
+   The start page opens: pick this TV's "Live" button with the remote
+   (TV 1, TV 2 or TV 3). The TV remembers it. From now on, when it turns on,
+   it shows "Otvaram TV 2 (Live) za 8 s..." and opens its menu by itself.
+   To pick again: press OK on "Promijeni izbor" during those 8 seconds.
+   Typing tip: plug a USB keyboard into the TV, or use the phone keyboard
+   in the Google TV app (same Wi-Fi) to type/paste the address.
 5. Restart the TV once to check it starts straight into the menu.
 
 
