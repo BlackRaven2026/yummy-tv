@@ -1,0 +1,91 @@
+YUMMY – NEW YEAR TV MENU  (3 x MAX 43MT304S, Android 11)
+========================================================
+
+This folder IS the website. Put it online once (GitHub Pages, free), point
+each TV at its page, and from then on you update the menu from home.
+
+  Page for each TV                Live (animated)     Video (for slow TVs)
+  TV 1 Palačinke & Specijaliteti  tv1.html            tv1-video.html
+  TV 2 Mini palačinke i krofnice  tv2.html            tv2-video.html
+  TV 3 Napravi svoju palačinku    tv3.html            tv3-video.html
+  Start page (pick a TV)          index.html
+
+Santa flies non-stop in spiral loops from TV 1 -> TV 2 -> TV 3 and back to
+TV 1 (one lap = 30 s), tossing little party hats and gifts. Put the TVs side
+by side in order 1 - 2 - 3. Both the live and the video pages are timed by
+the clock, so the 3 TVs stay in step by themselves (even if one TV uses the
+live page and another the video page).
+
+
+STEP 1 – PUT IT ONLINE (once, ~10 minutes, from your PC)
+--------------------------------------------------------
+1. Open GitHub Desktop and sign in to your GitHub account.
+2. File -> Add local repository -> choose this "new-year" folder.
+   It will say it's not a repository: click "create a repository".
+   Name: yummy-tv   ->  Create repository.
+3. Click "Publish repository". UNTICK "Keep this code private"
+   (free GitHub Pages needs a public repository – it is just a menu).
+4. On github.com open the repository -> Settings -> Pages.
+   Source: "Deploy from a branch", Branch: main, folder: / (root) -> Save.
+5. After 1-2 minutes your menu is online at:
+     https://YOUR-USERNAME.github.io/yummy-tv/
+   TV addresses:
+     https://YOUR-USERNAME.github.io/yummy-tv/tv1.html
+     https://YOUR-USERNAME.github.io/yummy-tv/tv2.html
+     https://YOUR-USERNAME.github.io/yummy-tv/tv3.html
+
+
+STEP 2 – TEST ON ONE TV FIRST
+-----------------------------
+Open https://YOUR-USERNAME.github.io/yummy-tv/ in the TV's browser, choose
+"Live" for that TV and watch for a minute.
+  - Snow, lights and Santa move smoothly  -> use the Live pages (tvX.html).
+  - Choppy / stuttering                   -> use the Video pages (tvX-video.html).
+
+
+STEP 3 – SET UP EACH TV (once per TV)
+-------------------------------------
+1. TV settings -> Date & time -> "Automatic" (internet time). This is what
+   keeps the 3 TVs in step.
+2. TV settings -> turn OFF sleep timer, auto power off, "no signal" standby
+   and eco / power-saving standby.
+3. Install "Fully Kiosk Browser" (Google Play on the TV; if it is not in the
+   store, download the APK from fully-kiosk.com and install it from a USB
+   stick). Some features need a paid licence (a few euros per TV) –
+   check what is free before buying.
+4. In Fully Kiosk settings:
+     Start URL            -> that TV's address (tv1.html / tv2.html / tv3.html)
+     Launch on boot       -> ON (the menu starts when the TV turns on)
+     Keep screen on       -> ON
+     Fullscreen / hide status & navigation bar -> ON
+     Web content: Autoplay videos -> ON (needed for the video pages)
+5. Restart the TV once to check it starts straight into the menu.
+
+
+STEP 4 – UPDATING FROM HOME
+---------------------------
+Change a price or text:
+  1. Open tv1.html / tv2.html / tv3.html in Notepad, find the old price
+     (e.g. 6,90 €), change it, save.
+  2. GitHub Desktop -> write a short note (e.g. "new prices") ->
+     "Commit to main" -> "Push origin".
+  3. The TVs reload by themselves within ~3-15 minutes. Nothing to do at the shop.
+
+Changed something else (pictures, design, videos)?
+  Also open version.json and change the number (e.g. 2026-11-17-1 ->
+  2026-11-17-2) before you commit. That tells the TVs to reload.
+
+Video pages: the videos are pre-made, so new prices need new videos.
+Ask Claude to re-render them, then commit + push as above.
+
+Good to know:
+  - If the internet goes down, the TVs keep showing the menu they have.
+  - Each TV also refreshes itself every morning at 06:00.
+  - Updates can take up to ~15 minutes to appear (GitHub's cache).
+
+
+BACKUP – WITHOUT INTERNET (USB)
+-------------------------------
+Copy video/Yummy-tv1.mp4 (tv2, tv3) to a USB stick, play it in the TV's
+media player with "Repeat / Ponavljanje" ON. Each is a 60 s seamless loop.
+(No remote updates and no syncing between TVs this way.)
