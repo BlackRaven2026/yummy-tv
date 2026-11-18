@@ -1,4 +1,4 @@
-YUMMY – NEW YEAR TV MENU  (3 x MAX 43MT304S, Android 11)
+YUMMY – TV MENU  (3 x MAX 43MT304S, Android 11)
 ========================================================
 
 This folder IS the website. Put it online once (GitHub Pages, free), point
@@ -62,25 +62,26 @@ STEP 3 – SET UP EACH TV (once per TV)
 5. Restart the TV once to check it starts straight into the menu.
 
 
-STEP 4 – UPDATING FROM HOME
----------------------------
-Change a price or text:
-  1. Open tv1.html / tv2.html / tv3.html in Notepad, find the old price
-     (e.g. 6,90 €), change it, save.
-  2. GitHub Desktop -> write a short note (e.g. "new prices") ->
-     "Commit to main" -> "Push origin".
-     IMPORTANT: GitHub Desktop must be signed in as BlackRaven2026
-     (File -> Options -> Accounts). If it shows another account, sign out
-     and sign in as BlackRaven2026. Then File -> Add local repository ->
-     choose this "new-year" folder (it is already connected to yummy-tv).
-  3. The TVs reload by themselves within ~3-15 minutes. Nothing to do at the shop.
+STEP 4 – UPDATING FROM HOME  (Yummy TV Studio)
+----------------------------------------------
+Do NOT edit the files in this folder by hand any more – they are made by
+the studio and get overwritten.
 
-Changed something else (pictures, design, videos)?
-  Also open version.json and change the number (e.g. 2026-11-17-1 ->
-  2026-11-17-2) before you commit. That tells the TVs to reload.
+  1. Open the folder  Yummy Website \ tv-menu-studio  and double-click
+     "START STUDIO.bat". The editor opens in your browser
+     (http://localhost:5178). Keep the black window open while you work.
+  2. Change prices, names, ingredients, pictures; add or remove items;
+     hide sold-out items (eye button); pick a theme at the top
+     (Nova godina, Uskrs, Yummy crni, Yummy bijeli).
+     Click anything on the TV picture to jump straight to it.
+     Everything saves by itself. Made a mistake?  ↶ Undo.
+  3. Click "⬆ Publish to TVs" -> "Upload to TVs". Done.
+  4. Only if some TV uses the VIDEO page: click "🎬 Videos" ->
+     "Make new videos" (about 4 min per TV), then "Upload to TVs".
 
-Video pages: the videos are pre-made, so new prices need new videos.
-Ask Claude to re-render them, then commit + push as above.
+If uploading ever fails: open GitHub Desktop (signed in as BlackRaven2026),
+File -> Add local repository -> choose this "tv-menu-site" folder,
+then press "Push origin".
 
 Good to know:
   - If the internet goes down, the TVs keep showing the menu they have.

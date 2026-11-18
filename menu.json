@@ -1,0 +1,560 @@
+{
+  "format": 1,
+  "theme": "newyear",
+  "settings": {
+    "phone": "+382 68 418 544",
+    "instagram": "yummy_tivat",
+    "tagline": "Najbolje palačinke u *Tivtu*",
+    "logo": "logo.png",
+    "glovo": "glovo.png"
+  },
+  "themes": {
+    "newyear": {
+      "greeting": "Srećna Nova",
+      "year": "2027",
+      "slogan": "Srećni praznici od Yummy ekipe!"
+    },
+    "easter": {
+      "greeting": "Srećan Uskrs",
+      "year": "",
+      "slogan": "Srećni praznici od Yummy ekipe!"
+    },
+    "black": {
+      "greeting": "",
+      "year": "",
+      "slogan": "Najbolje palačinke u Tivtu"
+    },
+    "white": {
+      "greeting": "",
+      "year": "",
+      "slogan": "Najbolje palačinke u Tivtu"
+    }
+  },
+  "screens": [
+    {
+      "name": "TV 1",
+      "layout": "split",
+      "title": {
+        "a": "Palačinke &",
+        "b": "Specijaliteti",
+        "accentFirst": true
+      },
+      "sections": [
+        {
+          "area": "left",
+          "style": "big",
+          "columns": 2,
+          "title": "",
+          "note": "",
+          "items": [
+            {
+              "name": "Dubai",
+              "ingr": "Nutela, pistaći, kadaif",
+              "price": "7,10",
+              "weight": "500g",
+              "img": "r_dubai.png"
+            },
+            {
+              "name": "Kapri Spagetti",
+              "ingr": "Kinder namaz, plazma, šumsko voće, sladoled vanila",
+              "price": "6,20",
+              "weight": "700g",
+              "img": "r_kapri.png"
+            },
+            {
+              "name": "Suši",
+              "ingr": "Kinder namaz, banana, nutela, malina",
+              "price": "6,00",
+              "weight": "450g",
+              "img": "r_susi.png"
+            },
+            {
+              "name": "Strawberry Ice Spagetti",
+              "ingr": "Bijela čokolada, krem, jagoda, sladoled vanila",
+              "price": "6,40",
+              "weight": "700g",
+              "img": "r_straw.png"
+            },
+            {
+              "name": "Vanila Flex",
+              "ingr": "Mliječna čokolada, puding od vanile, kukuruzne pahuljice, banana",
+              "price": "5,80",
+              "weight": "500g",
+              "img": "r_flex.png"
+            },
+            {
+              "name": "Banana Spagetti",
+              "ingr": "Mliječna čokolada, bijela čokolada, plazma u mlijeku, banana",
+              "price": "6,80",
+              "weight": "700g",
+              "img": "r_banana.png"
+            },
+            {
+              "name": "Yummy",
+              "ingr": "Pistaći namaz, kinder krem, vanila puding, plazma",
+              "price": "5,90",
+              "weight": "500g",
+              "img": "r_yummy.png"
+            }
+          ]
+        },
+        {
+          "area": "right",
+          "style": "medium",
+          "columns": 2,
+          "title": "",
+          "note": "",
+          "items": [
+            {
+              "name": "Nutella Plazma",
+              "ingr": "",
+              "price": "4,50",
+              "weight": "300g",
+              "img": "c_nutella.png"
+            },
+            {
+              "name": "Krem, Banana Plazma",
+              "ingr": "",
+              "price": "5,10",
+              "weight": "350g",
+              "img": "c_banana.png"
+            },
+            {
+              "name": "Plazma u mlijeku",
+              "ingr": "Krem i plazma u mlijeku",
+              "price": "4,50",
+              "weight": "350g",
+              "img": "c_plazma.png"
+            },
+            {
+              "name": "Cheesecake",
+              "ingr": "Bijela čokolada, pavlaka, šumsko voće, plazma",
+              "price": "4,90",
+              "weight": "400g",
+              "img": "c_cheese.png"
+            },
+            {
+              "name": "Bueno",
+              "ingr": "Kinder namaz, plazma u mlijeku",
+              "note": "(jagoda / banana / malina)",
+              "price": "5,40",
+              "weight": "350g",
+              "img": "c_bueno.png"
+            },
+            {
+              "name": "Vanilla Sky",
+              "ingr": "Krem, puding od vanile, plazma",
+              "price": "4,70",
+              "weight": "350g",
+              "img": "c_vanilla.png"
+            },
+            {
+              "name": "Pistać",
+              "ingr": "Pistaći namaz, kokos, pistaći u komadu",
+              "price": "5,50",
+              "weight": "400g",
+              "img": "c_pistac.png"
+            },
+            {
+              "name": "Raffaello",
+              "ingr": "Bijeli krem, kokos, badem",
+              "price": "5,10",
+              "weight": "400g",
+              "img": "c_raff.png"
+            },
+            {
+              "name": "Snikers",
+              "ingr": "Krema, karamela, kikiriki",
+              "price": "5,00",
+              "weight": "400g",
+              "img": "c_snikers.png"
+            },
+            {
+              "name": "Schwarzwald",
+              "ingr": "Krem, šlag, višnja, plazma",
+              "price": "4,90",
+              "weight": "350g",
+              "img": "c_schwarz.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TV 2",
+      "layout": "split-band",
+      "title": {
+        "a": "Mini –",
+        "b": "Palačinke i Krofnice",
+        "accentFirst": false
+      },
+      "sections": [
+        {
+          "area": "left",
+          "style": "tiles",
+          "columns": 3,
+          "title": "Mini holandske palačinke",
+          "note": "15 kom",
+          "items": [
+            {
+              "name": "Nutela Plazma",
+              "price": "5,20",
+              "weight": "500g",
+              "img": "m_nutela.png"
+            },
+            {
+              "name": "Oreo",
+              "price": "5,20",
+              "weight": "500g",
+              "img": "m_oreo.png"
+            },
+            {
+              "name": "Nutela Collor",
+              "price": "5,00",
+              "weight": "500g",
+              "img": "m_collor.png"
+            },
+            {
+              "name": "Jagoda Tart",
+              "ingr": "Kinder namaz, jagoda, plazma",
+              "price": "6,10",
+              "weight": "500g",
+              "img": "m_jagoda.png"
+            },
+            {
+              "name": "Pistaći Jagoda",
+              "ingr": "Bijeli krem, pistaći u komadu, jagoda",
+              "price": "6,30",
+              "weight": "500g",
+              "img": "m_pistjag.png"
+            },
+            {
+              "name": "Banana Plazma",
+              "ingr": "Krem, banana, plazma",
+              "price": "5,70",
+              "weight": "500g",
+              "img": "m_banana.png"
+            }
+          ]
+        },
+        {
+          "area": "right",
+          "style": "tiles-wide",
+          "columns": 3,
+          "title": "Mini američke krofnice",
+          "note": "15 kom / 7 kom",
+          "items": [
+            {
+              "name": "Nutela Plazma",
+              "price": "5,00 / 3,80",
+              "weight": "550g / 350g",
+              "img": "k_nutela.png"
+            },
+            {
+              "name": "Dupla Čokolada",
+              "price": "5,00 / 3,80",
+              "weight": "550g / 350g",
+              "img": "k_dupla.png"
+            },
+            {
+              "name": "Dubai",
+              "price": "6,80 / 5,60",
+              "weight": "550g / 350g",
+              "img": "k_dubai.png"
+            },
+            {
+              "name": "Cherry Dream",
+              "ingr": "Bijela čokolada, nadjev višnja, plazma",
+              "price": "5,90 / 4,70",
+              "weight": "550g / 350g",
+              "img": "k_cherry.png"
+            },
+            {
+              "name": "Kinder Delux",
+              "ingr": "Kinder krem, kinder čokolada, plazma, banana",
+              "price": "6,20 / 5,00",
+              "weight": "550g / 350g",
+              "img": "k_kinder.png"
+            },
+            {
+              "name": "Pistać Malina",
+              "ingr": "Pistaći, maline, plazma u mlijeku",
+              "price": "6,30 / 5,00",
+              "weight": "550g / 350g",
+              "img": "k_pistac.png"
+            }
+          ]
+        },
+        {
+          "area": "band",
+          "style": "band",
+          "columns": 4,
+          "title": "Slane Palačinke",
+          "note": "",
+          "items": [
+            {
+              "name": "Klasik",
+              "ingr": "Šunka / kulen / pečenica",
+              "price": "4,70",
+              "weight": "350g",
+              "img": "s_klasik.png"
+            },
+            {
+              "name": "Pizza",
+              "ingr": "Sir, šunka, origano, šampinjoni, kečap",
+              "price": "5,00",
+              "weight": "400g",
+              "img": "s_pizza.png"
+            },
+            {
+              "name": "Domaćinska",
+              "ingr": "Pršut, sir, kajmak, marinirani šampinjoni",
+              "price": "5,50",
+              "weight": "450g",
+              "img": "s_domac.png"
+            },
+            {
+              "name": "Royal",
+              "ingr": "Šunka, kulen, pečenica, sir, pavlaka",
+              "price": "5,80",
+              "weight": "450g",
+              "img": "s_royal.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TV 3",
+      "layout": "builder",
+      "title": {
+        "a": "Napravi svoju",
+        "b": "palačinku",
+        "accentFirst": true
+      },
+      "sections": [
+        {
+          "area": "pills",
+          "style": "pills",
+          "title": "Osnova",
+          "items": [
+            {
+              "name": "Mini američke krofnice 15/7 kom",
+              "price": "3,20 / 2,00"
+            },
+            {
+              "name": "Pancake",
+              "price": "2,50"
+            },
+            {
+              "name": "Puffy pancakes · 15 kom",
+              "price": "3,20"
+            }
+          ]
+        },
+        {
+          "area": "cards",
+          "style": "cards",
+          "title": "Dodaci",
+          "cards": [
+            {
+              "title": "Namazi",
+              "weight": "90g",
+              "items": [
+                {
+                  "name": "Nutella",
+                  "price": "1,00"
+                },
+                {
+                  "name": "Kinder",
+                  "price": "1,00"
+                },
+                {
+                  "name": "Krem",
+                  "price": "0,80"
+                },
+                {
+                  "name": "Euro cream",
+                  "price": "0,90"
+                },
+                {
+                  "name": "Pistaći",
+                  "price": "1,20"
+                },
+                {
+                  "name": "Vanilla puding",
+                  "price": "1,00"
+                },
+                {
+                  "name": "Bijela linolada",
+                  "price": "1,00"
+                },
+                {
+                  "name": "Nadjev višnja",
+                  "price": "0,90"
+                },
+                {
+                  "name": "Nadjev jagoda",
+                  "price": "0,90"
+                }
+              ]
+            },
+            {
+              "title": "Voće",
+              "weight": "40g",
+              "items": [
+                {
+                  "name": "Banana",
+                  "price": "0,80"
+                },
+                {
+                  "name": "Šumsko voće",
+                  "price": "0,80"
+                },
+                {
+                  "name": "Višnja",
+                  "price": "0,90"
+                },
+                {
+                  "name": "Malina",
+                  "price": "1,00"
+                },
+                {
+                  "name": "Jagoda",
+                  "price": "1,00"
+                }
+              ]
+            },
+            {
+              "title": "Keks",
+              "weight": "40g",
+              "items": [
+                {
+                  "name": "Plazma",
+                  "price": "0,80"
+                },
+                {
+                  "name": "Plazma u mlijeku",
+                  "price": "1,00"
+                },
+                {
+                  "name": "Oreo",
+                  "price": "0,80"
+                }
+              ]
+            },
+            {
+              "title": "Prelivi",
+              "weight": "30g",
+              "items": [
+                {
+                  "name": "Čokolada",
+                  "price": "0,80"
+                },
+                {
+                  "name": "Karamela",
+                  "price": "0,80"
+                },
+                {
+                  "name": "Šumsko voće",
+                  "price": "0,80"
+                },
+                {
+                  "name": "Crna čokolada",
+                  "price": "0,80"
+                },
+                {
+                  "name": "Bijela čokolada",
+                  "price": "0,80"
+                }
+              ]
+            },
+            {
+              "title": "Džemovi",
+              "weight": "90g",
+              "items": [
+                {
+                  "name": "Jagoda",
+                  "price": "0,90"
+                },
+                {
+                  "name": "Šljiva",
+                  "price": "0,90"
+                },
+                {
+                  "name": "Kajsija",
+                  "price": "0,90"
+                }
+              ]
+            },
+            {
+              "title": "Ostalo",
+              "weight": "40g",
+              "wide": true,
+              "items": [
+                {
+                  "name": "Šlag",
+                  "price": "0,70"
+                },
+                {
+                  "name": "Čoko mrvice",
+                  "price": "0,70"
+                },
+                {
+                  "name": "Šarene mrvice",
+                  "price": "0,70"
+                },
+                {
+                  "name": "Točeni sladoled",
+                  "price": "2,00"
+                },
+                {
+                  "name": "Kadaif",
+                  "price": "1,00"
+                },
+                {
+                  "name": "Kornflex",
+                  "price": "0,70"
+                }
+              ],
+              "extra": {
+                "text": "Ice-cream · 100g",
+                "price": "1,20"
+              }
+            },
+            {
+              "title": "Orašasti plodovi",
+              "weight": "40g",
+              "items": [
+                {
+                  "name": "Lješnik",
+                  "price": "0,70"
+                },
+                {
+                  "name": "Kikiriki",
+                  "price": "0,80"
+                },
+                {
+                  "name": "Pistaći",
+                  "price": "1,20"
+                },
+                {
+                  "name": "Kokos",
+                  "price": "0,60"
+                },
+                {
+                  "name": "Orah",
+                  "price": "0,50"
+                },
+                {
+                  "name": "Badem",
+                  "price": "0,80"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,25 +1,41 @@
-/* Yummy – New Year TV menu effects (shared by tv1/tv2/tv3) */
+/* Yummy – theme "Nova godina": snow, stars, fireworks, garland, ornaments and
+   Santa's sleigh flying across all TVs (timed by the clock, so the TVs stay in step). */
 (function () {
   var W = 1920, H = 1080;
   var stage = document.getElementById('stage');
+  var CFG = window.YUMMY || {};
 
-  /* ---------- fit 1920x1080 to any screen ---------- */
-  function fit() {
-    var s = Math.min(window.innerWidth / W, window.innerHeight / H);
-    stage.style.transform = 'scale(' + s + ')';
+  /* ---------- hanging ornaments + firework zones: placed in the free space of the header ---------- */
+  var STAR = '<svg viewBox="0 0 100 100"><path d="M50 4 61 38 97 38 68 59 79 94 50 73 21 94 32 59 3 38 39 38Z" fill="url(#sgx)" stroke="#fff1c9" stroke-width="2"/><defs><linearGradient id="sgx" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1c9"/><stop offset=".5" stop-color="#f6d27f"/><stop offset="1" stop-color="#c9973a"/></linearGradient></defs></svg>';
+  var ORN_SETS = [
+    [{ dx: -76, len: 58, size: 44, c1: '#ff7a6e', c2: '#8e1410', sw: 4.8, sd: 0 },
+     { dx: 0, len: 84, size: 54, star: 1, sw: 6.2, sd: -2 },
+     { dx: 72, len: 40, size: 38, sw: 5.4, sd: -1 }],
+    [{ dx: -34, len: 62, size: 42, c1: '#9fd0ff', c2: '#1d4f8f', sw: 5.1, sd: 0 },
+     { dx: 34, len: 100, size: 36, sw: 6, sd: -2 }]
+  ];
+  var ornEls = [];
+  function placeOrnaments() {
+    for (var i = 0; i < ornEls.length; i++) ornEls[i].parentNode && ornEls[i].parentNode.removeChild(ornEls[i]);
+    ornEls = [];
+    var gaps = (window.yummyGaps ? window.yummyGaps(150) : []).filter(function (g) { return g.x1 - g.x0 >= 150; });
+    gaps.sort(function (a, b) { return (b.x1 - b.x0) - (a.x1 - a.x0); });
+    gaps = gaps.slice(0, 2);
+    zones = gaps.length ? gaps.map(function (g) { return [g.x0 + 30, 70, g.x1 - 30, 170]; }) : [[200, 60, 1720, 170]];
+    gaps.forEach(function (g, gi) {
+      var cx = (g.x0 + g.x1) / 2, set = (g.x1 - g.x0 >= 260 && gi === 0) ? ORN_SETS[0] : ORN_SETS[1];
+      set.forEach(function (o) {
+        var d = document.createElement('div');
+        d.className = 'orn' + (o.star ? ' star' : '');
+        d.style.cssText = 'left:' + (cx + o.dx) + 'px;--len:' + o.len + 'px;--size:' + o.size + 'px;--sw:' + o.sw + 's;--sd:' + o.sd + 's' +
+          (o.c1 ? ';--c1:' + o.c1 + ';--c2:' + o.c2 : '');
+        d.innerHTML = '<div class="swing"><div class="cord"></div><div class="ball">' + (o.star ? STAR : '') + '</div></div>';
+        stage.appendChild(d);
+        ornEls.push(d);
+      });
+    });
   }
-  window.addEventListener('resize', fit);
-  fit();
-
-  /* ---------- keys: 1/2/3 switch page, F = fullscreen ---------- */
-  window.addEventListener('keydown', function (e) {
-    if (e.key === '1' || e.key === '2' || e.key === '3') location.href = 'tv' + e.key + '.html';
-    if (e.key === 'f' || e.key === 'F') {
-      var d = document.documentElement;
-      if (!document.fullscreenElement && d.requestFullscreen) d.requestFullscreen();
-      else if (document.exitFullscreen) document.exitFullscreen();
-    }
-  });
+  window.addEventListener('yummy:layout', placeOrnaments);
 
   /* ---------- garland of lights across the top ---------- */
   var COLORS = [
@@ -68,20 +84,12 @@
     }
   }
 
-  /* ---------- stagger food float + price shimmer ---------- */
-  var imgs = document.querySelectorAll('.dish img');
-  for (var a = 0; a < imgs.length; a++) {
-    imgs[a].style.setProperty('--ft', (5 + (a * 37 % 30) / 10) + 's');
-    imgs[a].style.setProperty('--fd', (-(a * 1.3) % 7) + 's');
-  }
-  var tags = document.querySelectorAll('.price');
-  for (a = 0; a < tags.length; a++) tags[a].style.setProperty('--pd', (a * 0.55 % 6) + 's');
-
   /* ---------- canvases: stars, snow, fireworks ---------- */
   var back = document.getElementById('fx-back'), front = document.getElementById('fx-front');
   back.width = front.width = W; back.height = front.height = H;
   var bx = back.getContext('2d'), fx = front.getContext('2d');
-  var zones = window.NY_FW_ZONES || [[200, 60, 1720, 400]];
+  var zones = [[200, 60, 1720, 170]];
+  placeOrnaments();
 
   function rnd(a, b) { return a + Math.random() * (b - a); }
 
@@ -166,14 +174,14 @@
      Flies left -> right on a schedule tied to the clock, so TVs 1, 2, 3
      placed side by side see ONE sleigh crossing all three screens. */
   var VIDEO = /[?&]video\b/.test(location.search);
-  var PAGE = window.NY_PAGE || 1;
+  var PAGE = CFG.tv || 1, COUNT = CFG.count || 3;
   var SL_W = 440, SL_VBW = 570, SL_S = SL_W / SL_VBW, SL_H = 135 * SL_S;
   // Non-stop spiral flight around the 3 TVs: one loop per screen, and when Santa
   // leaves TV 3 on the right he comes straight back in on the left of TV 1.
   // One lap of all 3 screens = 30 s, so everything repeats exactly every 60 s.
-  var SP_LAP = 30, SP_CYCLE = 60;                   // seconds
-  var SP_P = 3 * W;                                 // width of the 3-TV "ring"
-  var SP_V = SP_P / SP_LAP, SP_OM = 2 * Math.PI * 3 / SP_LAP;
+  var SP_LAP = 10 * COUNT, SP_CYCLE = 60;                   // seconds
+  var SP_P = COUNT * W;                                 // width of the 3-TV "ring"
+  var SP_V = SP_P / SP_LAP, SP_OM = 2 * Math.PI * COUNT / SP_LAP;
   var SP_RX = 520, SP_RY = 350, SP_PHI = 0, SP_YC = 540;   // PHI 0 = loop centred on each TV
   function wrapX(x, m) { return ((x + m) % SP_P + SP_P) % SP_P - m; }   // -> [-m, P-m)
 

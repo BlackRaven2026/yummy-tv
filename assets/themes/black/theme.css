@@ -1,0 +1,56 @@
+/* Theme: Yummy crni – the original black chalkboard look */
+:root{
+  --orange:#ff7a12;--orange-hi:#ff9a3d;--ink:#ffffff;--soft:#d9d4cc;
+  --line:rgba(255,255,255,.22);--card:rgba(255,255,255,.035);
+  --pad-top:52px;
+  --stage-bg:
+    radial-gradient(1300px 800px at 50% 40%, #2a2a2a 0%, rgba(30,30,30,0) 70%),
+    radial-gradient(900px 600px at 10% 100%, rgba(255,122,18,.07), transparent 70%),
+    linear-gradient(180deg,#1b1b1b 0%,#0e0e0e 100%);
+}
+.grain{position:absolute;inset:0;z-index:0;opacity:.5;pointer-events:none;background-size:256px 256px}
+.sweep{position:absolute;z-index:2;top:-200px;left:0;width:300px;height:1480px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.025) 45%,rgba(255,255,255,.05) 50%,rgba(255,255,255,.025) 55%,transparent);
+  transform:translateX(-400px) rotate(18deg);animation:sweep 20s cubic-bezier(.45,.05,.55,.95) infinite}
+@keyframes sweep{0%,55%{transform:translateX(-500px) rotate(18deg)}100%{transform:translateX(2300px) rotate(18deg)}}
+
+.title{font-family:Montserrat,sans-serif;font-weight:900;letter-spacing:-1px}
+.t-acc{color:var(--orange)}
+.t-main{color:#fff}
+.hline{height:4px;background:#fff;margin-right:auto;width:46%;margin-left:26px;opacity:.95}
+.vsep{width:3px;background:repeating-linear-gradient(180deg,var(--orange) 0 16px,transparent 16px 28px)}
+.logo-greet img{height:calc(126px * var(--k,1))}
+.greet .script{color:var(--orange)}
+.greet .year{color:#fff}
+.greet.small{border:1px solid var(--line)}
+
+.name{color:var(--orange);font-weight:700;letter-spacing:1px}
+.ingr{color:var(--soft)}
+.ingr small{color:var(--orange)}
+.w{color:var(--orange);font-weight:600}
+.price{color:#fff;font-weight:800;padding:6px 16px 7px!important;border-radius:50%;background:transparent;
+  border:3px solid var(--orange);transform:rotate(-4deg);margin:0 4px}
+.price::after{content:"";position:absolute;inset:-6px -4px -3px -7px;border:2px solid rgba(255,122,18,.65);border-radius:50%;transform:rotate(7deg);pointer-events:none}
+.pill .price,.extra .price{border:none;transform:none;color:var(--orange);padding:0!important;margin:0}
+.pill .price::after,.extra .price::after{display:none}
+
+.dish img{filter:drop-shadow(0 12px 14px rgba(0,0,0,.6))}
+.panel{border-radius:18px;background:transparent}
+.card{border-top:none}
+.card h3{border-bottom:5px solid #fff}
+.card h3 .name{color:var(--orange)}
+.card li{color:#fff;font-weight:500}
+.card li .p{color:#fff;font-weight:500}
+.pill{background:transparent;color:#fff;font-weight:800}
+.deco{display:none}
+.sub{color:#fff;font-weight:500}
+.sub b{color:var(--orange);font-weight:500}
+
+.band{background:linear-gradient(180deg,#3a2614 0%,#24170c 100%);border-radius:0;margin-left:-44px;margin-right:-44px;padding-left:66px;padding-right:66px;margin-bottom:-16px;height:296px}
+.band-h{background:transparent;color:#fff;font-family:Montserrat,sans-serif;font-weight:900;text-transform:none;font-size:50px;letter-spacing:-1px;top:-6px}
+.band-h .acc{color:var(--orange)}
+
+.tag{color:var(--orange)}
+.tag b{color:#fff}
+.contact{background:var(--orange);color:#1b1b1b;border-radius:0 6px 6px 0;clip-path:polygon(4% 0,100% 0,100% 100%,4% 100%,0 50%);padding-left:52px}
+.slogan{color:var(--orange)}

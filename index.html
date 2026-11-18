@@ -40,32 +40,25 @@
   <div class="grid">
     <div class="tv"><h2>TV 1</h2><small>Palačinke &amp; Specijaliteti</small>
       <a href="tv1.html">Live</a><a class="alt" href="tv1-video.html">Video</a></div>
-    <div class="tv"><h2>TV 2</h2><small>Mini palačinke i krofnice</small>
+    <div class="tv"><h2>TV 2</h2><small>Mini – Palačinke i Krofnice</small>
       <a href="tv2.html">Live</a><a class="alt" href="tv2-video.html">Video</a></div>
     <div class="tv"><h2>TV 3</h2><small>Napravi svoju palačinku</small>
       <a href="tv3.html">Live</a><a class="alt" href="tv3-video.html">Video</a></div>
   </div>
 <script>
-/* Each TV remembers which page it was given. Next time (e.g. after the TV is
-   switched on) this start page opens that page by itself after 8 seconds,
-   unless someone presses OK on "Promijeni izbor". */
 (function () {
   var KEY = 'yummyTvPage', saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
   var links = document.querySelectorAll('.grid a');
-  var NAMES = { 'tv1.html': 'TV 1 (Live)', 'tv2.html': 'TV 2 (Live)', 'tv3.html': 'TV 3 (Live)',
-                'tv1-video.html': 'TV 1 (Video)', 'tv2-video.html': 'TV 2 (Video)', 'tv3-video.html': 'TV 3 (Video)' };
-
+  var NAMES = {"tv1.html":"TV 1 (Live)","tv1-video.html":"TV 1 (Video)","tv2.html":"TV 2 (Live)","tv2-video.html":"TV 2 (Video)","tv3.html":"TV 3 (Live)","tv3-video.html":"TV 3 (Video)"};
   for (var i = 0; i < links.length; i++) {
     links[i].addEventListener('click', function () {
       try { localStorage.setItem(KEY, this.getAttribute('href')); } catch (e) {}
     });
     if (links[i].getAttribute('href') === saved) links[i].classList.add('chosen');
   }
-
   var choose = /[?&]izbor\b/.test(location.search);
   if (!saved || !NAMES[saved] || choose) { links[0].focus(); return; }
-
   var box = document.getElementById('auto'), sec = 8, timer;
   document.getElementById('autoName').textContent = NAMES[saved];
   box.style.display = 'flex';
