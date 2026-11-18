@@ -1,5 +1,6 @@
 /* Theme: Yummy crni – the original black chalkboard look */
 :root{
+  --doodle:rgba(255,255,255,.075);--steam:rgba(255,255,255,.6);
   --orange:#ff7a12;--orange-hi:#ff9a3d;--ink:#ffffff;--soft:#d9d4cc;
   --line:rgba(255,255,255,.22);--card:rgba(255,255,255,.035);
   --pad-top:52px;

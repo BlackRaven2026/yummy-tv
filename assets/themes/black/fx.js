@@ -2,6 +2,8 @@
 (function () {
   var W = 1920, H = 1080;
   function rnd(a, b) { return a + Math.random() * (b - a); }
+  // kitchen doodles, pancake stack and the Yummy chef (themes/shared/shop.js)
+  if (window.yummyShop) window.yummyShop({ big: (window.YUMMY || {}).big !== false });
 
   // chalkboard grain, drawn once
   var g = document.querySelector('.grain');

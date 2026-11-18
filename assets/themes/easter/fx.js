@@ -1,7 +1,10 @@
-/* Yummy – theme "Uskrs": pastel bunting, hanging eggs, falling petals, butterflies */
+/* Yummy – theme "Uskrs": pastel bunting, hanging eggs, falling petals.
+   Big animation (can be switched off in the studio): a bunny hopping across all
+   TVs (timed by the clock, so the TVs stay in step) + butterflies. */
 (function () {
   var W = 1920, H = 1080;
   var stage = document.getElementById('stage');
+  var CFG = window.YUMMY || {}, BIG = CFG.big !== false;
   function rnd(a, b) { return a + Math.random() * (b - a); }
   var PASTEL = ['#ffb3cf', '#ffcf4d', '#9be3c4', '#b9a3f0', '#8fd3ff', '#ff9f8a'];
 
@@ -115,16 +118,88 @@
     bx.restore();
   }
 
+  /* ---------- the bunny: hops TV 1 -> TV 2 -> TV 3 -> TV 1, one lap = 10 s per TV, repeats every 60 s ---------- */
+  var VIDEO = /[?&]video\b/.test(location.search);
+  var PAGE = CFG.tv || 1, COUNT = CFG.count || 3;
+  var LAP = 10 * COUNT, CYCLE = 60, RING = COUNT * W, V = RING / LAP;
+  var HOP = 0.8, HOP_H = 70, BW = 112;
+  var bunny = null, legA, legB, shadow, landed = -1, puffs = [];
+  if (BIG) {
+    bunny = document.createElement('div');
+    bunny.id = 'bunny';
+    bunny.innerHTML =
+      '<svg viewBox="0 -4 124 104" width="' + BW + '" height="' + (BW * 104 / 124).toFixed(1) + '">' +
+      '<defs><radialGradient id="bfur" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ecdcf3"/></radialGradient></defs>' +
+      '<g fill="url(#bfur)" stroke="#b394d4" stroke-width="2.2">' +
+        '<ellipse cx="73" cy="17" rx="6.5" ry="19" transform="rotate(-14 73 17)"/>' +
+        '<ellipse cx="85" cy="15" rx="6.5" ry="19" transform="rotate(10 85 15)"/>' +
+        '<g class="la"><ellipse cx="36" cy="80" rx="17" ry="10"/><ellipse cx="74" cy="84" rx="8" ry="5"/></g>' +
+        '<g class="lb" style="display:none"><ellipse cx="22" cy="80" rx="20" ry="7" transform="rotate(28 22 80)"/><ellipse cx="86" cy="80" rx="10" ry="5" transform="rotate(-25 86 80)"/></g>' +
+        '<ellipse cx="50" cy="62" rx="33" ry="24"/>' +
+        '<circle cx="82" cy="45" r="18"/>' +
+        '<circle cx="17" cy="58" r="9.5" fill="#fff"/>' +
+      '</g>' +
+      '<ellipse cx="73" cy="18" rx="3" ry="13" transform="rotate(-14 73 18)" fill="#ffc4dc"/>' +
+      '<ellipse cx="85" cy="16" rx="3" ry="13" transform="rotate(10 85 16)" fill="#ffc4dc"/>' +
+      '<circle cx="89" cy="41" r="2.6" fill="#4a3150"/><circle cx="89.8" cy="40.2" r=".8" fill="#fff"/>' +
+      '<circle cx="99.5" cy="47" r="2.4" fill="#ff8fb6"/><ellipse cx="88" cy="51" rx="4.5" ry="2.6" fill="#ffd3e4" opacity=".8"/>' +
+      '</svg>';
+    stage.appendChild(bunny);
+    shadow = document.createElement('div');
+    shadow.id = 'bunny-shadow';
+    stage.appendChild(shadow);
+    legA = bunny.querySelector('.la'); legB = bunny.querySelector('.lb');
+  }
+  function baseY(t) { return 560 + 280 * Math.sin(2 * Math.PI * t / 10 + 0.6) + 60 * Math.sin(2 * Math.PI * t / 3.7); }
+  function updateBunny(now, dt) {
+    var clock = VIDEO ? now : Date.now();
+    var t = ((clock % (CYCLE * 1000)) + CYCLE * 1000) % (CYCLE * 1000) / 1000;
+    var gx = (V * t) % RING;                                   // position on the 3-TV ring
+    var x = ((gx - (PAGE - 1) * W + BW) % RING + RING) % RING - BW;   // wraps so TV 1 sees it come back from TV 3
+    var on = x > -BW && x < W + BW;
+    bunny.style.visibility = shadow.style.visibility = on ? 'visible' : 'hidden';
+    var h = (t % HOP) / HOP, k = Math.floor(t / HOP);
+    var lift = HOP_H * Math.sin(Math.PI * h);
+    var y = baseY(t);
+    if (on) {
+      var squash = (h < 0.07 || h > 0.93) ? 1 : 0;
+      var tilt = (0.5 - h) * -26;
+      bunny.style.transform = 'translate3d(' + (x - BW / 2).toFixed(1) + 'px,' + (y - lift - 70).toFixed(1) + 'px,0) rotate(' + tilt.toFixed(1) + 'deg)' +
+        (squash ? ' scale(1.08,.88)' : '');
+      var air = h > 0.12 && h < 0.88;
+      legA.style.display = air ? 'none' : ''; legB.style.display = air ? '' : 'none';
+      var sh = 1 - lift / HOP_H * 0.55;
+      shadow.style.transform = 'translate3d(' + (x - 45).toFixed(1) + 'px,' + (y + 14).toFixed(1) + 'px,0) scale(' + sh.toFixed(2) + ')';
+      shadow.style.opacity = (0.55 * sh).toFixed(2);
+    }
+    if (k !== landed) {                                         // landing: a little puff of petals
+      if (landed !== -1 && on) for (var i = 0; i < 6; i++)
+        puffs.push({ x: x + rnd(-30, 10), y: y + 10, vx: rnd(-60, 30), vy: rnd(-70, -20), life: 0, max: rnd(.6, 1.1),
+                     c: PASTEL[(Math.random() * PASTEL.length) | 0], r: rnd(2.5, 4.5) });
+      landed = k;
+    }
+    for (var j = puffs.length - 1; j >= 0; j--) {
+      var q = puffs[j];
+      q.life += dt;
+      if (q.life > q.max) { puffs.splice(j, 1); continue; }
+      q.x += q.vx * dt; q.y += q.vy * dt; q.vy += 120 * dt;
+      fx.globalAlpha = .8 * (1 - q.life / q.max);
+      fx.fillStyle = q.c; fx.beginPath(); fx.arc(q.x, q.y, q.r, 0, 6.3); fx.fill();
+    }
+    fx.globalAlpha = 1;
+  }
+
   var last = performance.now();
   function frame(now) {
     var dt = Math.min(.05, (now - last) / 1000); last = now;
     var tm = now / 1000;
     bx.clearRect(0, 0, W, H);
-    for (var i = 0; i < flies.length; i++) drawFly(flies[i], tm);
+    if (BIG) for (var i = 0; i < flies.length; i++) drawFly(flies[i], tm);
     bx.globalAlpha = 1;
     drawPetals(bx, backP, false, dt, tm);
     fx.clearRect(0, 0, W, H);
     drawPetals(fx, frontP, true, dt, tm);
+    if (BIG) updateBunny(now, dt);
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);

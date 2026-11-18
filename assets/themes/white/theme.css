@@ -1,5 +1,6 @@
 /* Theme: Yummy bijeli – clean white & orange */
 :root{
+  --doodle:rgba(168,97,28,.13);--steam:rgba(168,97,28,.35);
   --orange:#f07c00;--orange-d:#d96a00;--ink:#2b1d14;--soft:#5a4636;--brown:#a8611c;
   --line:rgba(160,110,60,.22);--card:#ffffff;
   --pad-top:56px;

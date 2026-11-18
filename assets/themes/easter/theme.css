@@ -85,3 +85,10 @@
 .card li{color:var(--ink)}
 .card li .p{color:var(--rose-d)}
 .slogan{color:var(--lav)}
+
+/* the hopping bunny (big animation) */
+#bunny{position:absolute;left:0;top:0;z-index:6;pointer-events:none;visibility:hidden;opacity:.93;transform-origin:50% 85%;
+  will-change:transform;filter:drop-shadow(0 4px 8px rgba(124,92,196,.25)) drop-shadow(0 0 10px rgba(255,255,255,.8))}
+#bunny svg{display:block;overflow:visible}
+#bunny-shadow{position:absolute;left:0;top:0;width:90px;height:16px;z-index:5;pointer-events:none;visibility:hidden;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(110,70,130,.35),transparent);transform-origin:50% 50%}

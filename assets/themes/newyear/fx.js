@@ -356,7 +356,9 @@
     ctx.globalAlpha = 1;
   }
 
+  var BIG = CFG.big !== false;
   function updateSleigh(now, dt) {
+    if (!BIG) return;   // "big animation" switched off in the studio
     var clock = VIDEO ? now : Date.now();
     var t = ((clock % (SP_CYCLE * 1000)) + SP_CYCLE * 1000) % (SP_CYCLE * 1000) / 1000;
     var st = sleighAt(t);

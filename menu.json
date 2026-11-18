@@ -12,22 +12,44 @@
     "newyear": {
       "greeting": "Srećna Nova",
       "year": "2027",
-      "slogan": "Srećni praznici od Yummy ekipe!"
+      "slogan": "Srećni praznici od Yummy ekipe!",
+      "big": true,
+      "showGreet": true
     },
     "easter": {
-      "greeting": "Srećan Uskrs",
+      "greeting": "Srećan Vaskrs",
       "year": "",
-      "slogan": "Srećni praznici od Yummy ekipe!"
+      "slogan": "Srećni praznici od Yummy ekipe!",
+      "big": true,
+      "showGreet": true
     },
     "black": {
       "greeting": "",
       "year": "",
-      "slogan": "Najbolje palačinke u Tivtu"
+      "slogan": "Najbolje palačinke u Tivtu",
+      "showGreet": true,
+      "big": true
     },
     "white": {
       "greeting": "",
       "year": "",
-      "slogan": "Najbolje palačinke u Tivtu"
+      "slogan": "Najbolje palačinke u Tivtu",
+      "big": true,
+      "showGreet": true
+    },
+    "nezavisnost": {
+      "greeting": "Dan nezavisnosti",
+      "year": "21. maj",
+      "slogan": "Živjela Crna Gora!",
+      "big": true,
+      "showGreet": true
+    },
+    "bozic": {
+      "greeting": "Hristos se rodi",
+      "year": "",
+      "slogan": "Srećan Božić i mirni praznici!",
+      "big": true,
+      "showGreet": true
     }
   },
   "screens": [
@@ -52,7 +74,8 @@
               "ingr": "Nutela, pistaći, kadaif",
               "price": "7,10",
               "weight": "500g",
-              "img": "r_dubai.png"
+              "img": "r_dubai.png",
+              "hidden": false
             },
             {
               "name": "Kapri Spagetti",

@@ -1,0 +1,78 @@
+/* Theme: Dan državnosti (13. jul) – elegant dark with the red & gold of Montenegro */
+:root{
+  --red:#c40308;--red-hi:#ff3b3f;--gold:#d3ae3b;--gold-hi:#ffe9a6;--gold-lo:#9c7a1c;--cream:#f8efe0;
+  --ink:#f8efe0;--line:rgba(211,174,59,.4);--card:rgba(255,255,255,.035);
+  --pad-top:64px;
+  --stage-bg:
+    radial-gradient(1100px 650px at 50% 40%, #2a1714 0%, rgba(30,18,16,0) 72%),
+    radial-gradient(900px 700px at 0% 0%, rgba(196,3,8,.22), transparent 70%),
+    radial-gradient(900px 700px at 100% 100%, rgba(196,3,8,.18), transparent 70%),
+    linear-gradient(180deg,#1a1210 0%,#0c0807 100%);
+}
+.beam{position:absolute;z-index:0;top:-300px;width:420px;height:1700px;pointer-events:none;filter:blur(30px);transform-origin:50% 0}
+.beam.b1{left:180px;background:linear-gradient(180deg,rgba(196,3,8,.25),transparent 70%);animation:beam 14s ease-in-out infinite alternate}
+.beam.b2{left:1300px;background:linear-gradient(180deg,rgba(211,174,59,.16),transparent 70%);animation:beam 18s ease-in-out -6s infinite alternate-reverse}
+@keyframes beam{from{transform:rotate(-14deg)}to{transform:rotate(14deg)}}
+.sweep{position:absolute;z-index:2;top:-200px;left:0;width:260px;height:1480px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,233,166,.04) 45%,rgba(255,233,166,.08) 50%,rgba(255,233,166,.04) 55%,transparent);
+  transform:translateX(-400px) rotate(18deg);animation:sweep 18s cubic-bezier(.45,.05,.55,.95) infinite}
+@keyframes sweep{0%,55%{transform:translateX(-500px) rotate(18deg)}100%{transform:translateX(2300px) rotate(18deg)}}
+/* red-gold sash across the top corner */
+.sash{position:absolute;z-index:3;top:34px;right:-120px;width:520px;height:34px;transform:rotate(32deg);pointer-events:none;
+  background:linear-gradient(180deg,var(--gold) 0 5px,var(--red) 5px 29px,var(--gold) 29px);box-shadow:0 6px 18px rgba(0,0,0,.45);opacity:.95}
+.sash::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+  background-size:40% 100%;background-repeat:no-repeat;animation:sashshine 7s ease-in-out infinite}
+@keyframes sashshine{0%,60%{background-position:-60% 0}100%{background-position:160% 0}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+/* laurel sprigs hanging in the header */
+.laurel{position:absolute;top:0;z-index:24;pointer-events:none;width:0;height:0}
+.laurel .swing{position:absolute;left:0;top:0;transform-origin:0 0;animation:swing var(--sw,6s) ease-in-out var(--sd,0s) infinite alternate}
+.laurel .cord{position:absolute;left:-1px;top:0;width:2px;height:var(--len,70px);background:linear-gradient(var(--gold-lo),var(--gold))}
+.laurel svg{position:absolute;left:-40px;top:var(--len,70px);width:80px;height:80px;overflow:visible;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5)) drop-shadow(0 0 10px rgba(211,174,59,.35))}
+@keyframes swing{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+
+/* ---------- text ---------- */
+.t-acc,.t-main{background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 10s linear infinite}
+.t-acc{background-image:linear-gradient(100deg,var(--gold) 0 42%,#fff2c0 48%,#fff 50%,#fff2c0 52%,var(--gold) 58% 100%)}
+.t-main{background-image:linear-gradient(100deg,var(--cream) 0 42%,var(--gold) 48%,#fff 50%,var(--gold) 52%,var(--cream) 58% 100%);animation-delay:-.6s}
+@keyframes shine{0%,40%{background-position:100% 0}100%{background-position:0 0}}
+.hline{height:4px;background:linear-gradient(90deg,transparent,var(--red) 10%,var(--red) 35%,var(--gold) 50%,var(--red) 65%,var(--red) 90%,transparent);box-shadow:0 0 12px rgba(196,3,8,.5)}
+.vsep{background:linear-gradient(180deg,transparent,var(--gold) 12%,var(--red) 50%,var(--gold) 88%,transparent);opacity:.9}
+
+.greet{flex-direction:column;align-items:flex-end;gap:2px;margin-right:60px}
+.greet .script{color:var(--gold);font-size:calc(68px * var(--k,1));text-shadow:0 0 16px rgba(211,174,59,.4)}
+.greet .year{font-size:calc(32px * var(--k,1));letter-spacing:6px;text-transform:uppercase;color:var(--red-hi)}
+.greet.small{flex-direction:row;align-items:center;gap:16px;margin-right:0;border:1px solid var(--line);background:rgba(20,10,8,.7)}
+.greet.small .script{font-size:40px}
+.greet.small .year{font-size:24px;letter-spacing:3px}
+
+.name{color:var(--gold)}
+.ingr{color:var(--cream)}
+.ingr small{color:var(--gold)}
+.w{color:var(--gold)}
+.price{overflow:hidden;color:#fff;background:linear-gradient(135deg,#e2262b 0%,#c40308 55%,#8e0206 100%);
+  box-shadow:0 0 0 2px var(--gold) inset,0 4px 14px rgba(196,3,8,.35)}
+.price::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;
+  background:linear-gradient(100deg,transparent,rgba(255,230,160,.55),transparent);transform:skewX(-20deg);animation:tag 6s ease-in-out var(--pd,0s) infinite}
+@keyframes tag{0%,78%{left:-60%}100%{left:130%}}
+.s-big .price,.s-band .price{padding:3px 16px 4px}
+
+.dish::before{content:"";position:absolute;left:8%;right:8%;bottom:2%;height:24%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(211,174,59,.25),transparent);filter:blur(2px)}
+.dish img{filter:drop-shadow(0 10px 14px rgba(0,0,0,.6))}
+
+.panel{border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.deco{width:.36em;height:.9em;margin-right:14px;background:linear-gradient(90deg,var(--gold) 0 22%,var(--red) 22% 78%,var(--gold) 78%)}
+.sub{color:var(--cream)}
+.sub b{color:var(--gold)}
+
+.band{background:linear-gradient(180deg,rgba(196,3,8,.12),rgba(255,255,255,.02))}
+.band-h{background:linear-gradient(180deg,#2a1210,#140907);border:1px solid var(--gold);color:var(--cream)}
+.band-h .acc{color:var(--gold)}
+
+.tag{color:var(--red-hi)}
+.tag b{color:var(--gold)}
+.logo{filter:drop-shadow(0 0 16px rgba(211,174,59,.35))}
+.contact{background:linear-gradient(135deg,#d0141a,#9a0207);box-shadow:0 0 0 2px var(--gold) inset,0 10px 26px rgba(196,3,8,.3);color:#fff}
+.card li .p{color:var(--gold)}
+.slogan{color:var(--gold);text-shadow:0 0 14px rgba(211,174,59,.35)}
