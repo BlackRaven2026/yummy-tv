@@ -31,26 +31,50 @@
       '<path d="' + ridge(255, 30, 7.7, 16) + '" fill="url(#lr3)" opacity=".85"/>' + '</svg>';
   }
 
-  /* the moon sits in the widest free space of the header */
-  var moon = document.querySelector('.moon');
-  function placeMoon() {
-    if (!moon) return;
-    var gaps = window.yummyGaps ? window.yummyGaps(170) : [];
-    gaps.sort(function (a, b) { return (b.x1 - b.x0) - (a.x1 - a.x0); });
-    if (!gaps.length) { moon.style.visibility = 'hidden'; return; }
-    moon.style.left = ((gaps[0].x0 + gaps[0].x1) / 2 - 52) + 'px';
-    moon.style.visibility = 'visible';
+  /* the Njegoš cameo (portrait: A. Prinzhofer, 1847 – public domain) sits in the widest free space of the header */
+  var me = document.currentScript && document.currentScript.src;
+  var cameo = document.querySelector('.cameo');
+  if (cameo) {
+    var laurel = '';
+    for (var li = 0; li < 5; li++) {
+      var lx = 46 - li * 9, ly = 18 + li * 3.2;
+      laurel += '<ellipse cx="' + lx + '" cy="' + ly + '" rx="7" ry="2.8" transform="rotate(' + (-25 - li * 10) + ' ' + lx + ' ' + ly + ')"/>' +
+                '<ellipse cx="' + (118 - lx) + '" cy="' + ly + '" rx="7" ry="2.8" transform="rotate(' + (25 + li * 10) + ' ' + (118 - lx) + ' ' + ly + ')"/>';
+    }
+    cameo.innerHTML = '<div class="oval"><img alt="Petar II Petrović Njegoš" src="' + (me ? me.replace(/fx\.js(\?.*)?$/, 'njegos-gold.png') : 'assets/themes/njegos/njegos-gold.png') + '"></div>' +
+      '<svg viewBox="0 0 118 40"><g fill="#c9a45c">' + laurel + '</g><path d="M50 32q9 6 18 0" stroke="#c9a45c" stroke-width="2" fill="none"/>' +
+      '<path d="M59 26l4 4-4 4-4-4z" fill="#f2dca0" stroke="#8c6a2c" stroke-width="1"/></svg>';
   }
-  window.addEventListener('yummy:layout', placeMoon);
-  placeMoon();
+  function placeCameo() {
+    if (!cameo) return;
+    var gaps = window.yummyGaps ? window.yummyGaps(150) : [];
+    gaps.sort(function (a, b) { return (b.x1 - b.x0) - (a.x1 - a.x0); });
+    if (!gaps.length) { cameo.style.visibility = 'hidden'; return; }
+    cameo.style.left = ((gaps[0].x0 + gaps[0].x1) / 2 - 59) + 'px';
+    cameo.style.top = Math.max(14, (gaps[0].y0 + gaps[0].y1) / 2 - 79) + 'px';
+    cameo.style.visibility = 'visible';
+  }
+  window.addEventListener('yummy:layout', placeCameo);
+  placeCameo();
+
+  /* line-art corner ornaments on the gold frame */
+  var fr = document.querySelector('.nframe');
+  if (fr) {
+    var C = '<svg viewBox="0 0 92 92"><g fill="none" stroke="#c9a45c" stroke-width="1.6" stroke-linecap="round">' +
+      '<path d="M2 60V14Q2 2 14 2h46"/><path d="M10 52V20q0-10 10-10h32"/>' +
+      '<path d="M20 20c10 2 16 8 18 18M20 20c2 10 8 16 18 18"/><path d="M38 38q6-14 20-12M38 38q-14 6-12 20"/>' +
+      '<path d="M58 26q8 0 10-6M26 58q0 8-6 10"/></g><path d="M20 20l5-2-2 5z" fill="#f2dca0"/>' +
+      '<circle cx="38" cy="38" r="3" fill="#f2dca0"/></svg>';
+    fr.innerHTML = ['left:-6px;top:-6px', 'right:-6px;top:-6px;transform:scaleX(-1)', 'left:-6px;bottom:-6px;transform:scaleY(-1)',
+      'right:-6px;bottom:-6px;transform:scale(-1,-1)'].map(function (st) { return C.replace('<svg ', '<svg style="' + st + '" '); }).join('');
+  }
 
   /* ---------- canvases ---------- */
   var back = document.getElementById('fx-back'), front = document.getElementById('fx-front');
-  back.width = front.width = W; back.height = front.height = H;
-  var bx = back.getContext('2d'), fx = front.getContext('2d');
+  var bx = window.yummyCanvas(back), fx = window.yummyCanvas(front);
   var stars = [];
   for (var i = 0; i < 180; i++) stars.push({ x: rnd(0, W), y: rnd(0, H * .8), r: rnd(.5, 1.8), p: rnd(0, 6.28), v: rnd(.4, 1.6), b: Math.random() < .08 });
-  var mist = [];
+  var mist = [], mistSpr = null;
   for (i = 0; i < 7; i++) mist.push({ x: rnd(0, W), y: rnd(760, 980), w: rnd(400, 800), h: rnd(60, 120), vx: rnd(-10, 10), a: rnd(.04, .08) });
 
   var glow = document.createElement('canvas'); glow.width = glow.height = 64;
@@ -105,16 +129,13 @@
     for (var i = 0; i < stars.length; i++) {
       var st = stars[i], al = .25 + .6 * (0.5 + 0.5 * Math.sin(tm * st.v + st.p));
       if (st.b) { bx.globalAlpha = al * .8; bx.drawImage(glow, st.x - 6, st.y - 6, 12, 12); bx.globalAlpha = 1; }
-      else { bx.fillStyle = 'rgba(255,248,230,' + al.toFixed(3) + ')'; bx.fillRect(st.x, st.y, st.r, st.r); }
+      else { bx.globalAlpha = al; bx.fillStyle = '#fff8e6'; bx.fillRect(st.x, st.y, st.r, st.r); bx.globalAlpha = 1; }
     }
     for (i = 0; i < mist.length; i++) {
       var m = mist[i];
       m.x += m.vx * dt; if (m.x < -m.w) m.x = W + m.w; if (m.x > W + m.w) m.x = -m.w;
-      var g = bx.createRadialGradient(m.x, m.y, 0, m.x, m.y, m.w / 2);
-      g.addColorStop(0, 'rgba(200,215,235,' + m.a + ')'); g.addColorStop(1, 'rgba(200,215,235,0)');
-      bx.fillStyle = g;
-      bx.save(); bx.translate(m.x, m.y); bx.scale(1, m.h / m.w); bx.translate(-m.x, -m.y);
-      bx.beginPath(); bx.arc(m.x, m.y, m.w / 2, 0, 6.3); bx.fill(); bx.restore();
+      if (!mistSpr) { mistSpr = document.createElement('canvas'); mistSpr.width = mistSpr.height = 128; var mg = mistSpr.getContext('2d'), gr = mg.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, 'rgba(200,215,235,1)'); gr.addColorStop(1, 'rgba(200,215,235,0)'); mg.fillStyle = gr; mg.fillRect(0, 0, 128, 128); }
+      bx.globalAlpha = m.a; bx.drawImage(mistSpr, m.x - m.w / 2, m.y - m.h / 2, m.w, m.h); bx.globalAlpha = 1;
     }
     fx.clearRect(0, 0, W, H);
     if (BIG) drawComet(now);

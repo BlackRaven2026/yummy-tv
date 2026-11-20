@@ -5,6 +5,7 @@
   var W = 1920, H = 1080;
   var stage = document.getElementById('stage');
   var CFG = window.YUMMY || {}, BIG = CFG.big !== false;
+  var LITE = document.documentElement.classList.contains('tv-live');   // live TV: a bit fewer particles
   function rnd(a, b) { return a + Math.random() * (b - a); }
   var PASTEL = ['#ffb3cf', '#ffcf4d', '#9be3c4', '#b9a3f0', '#8fd3ff', '#ff9f8a'];
 
@@ -62,8 +63,7 @@
 
   /* ---------- canvases: petals + butterflies ---------- */
   var back = document.getElementById('fx-back'), front = document.getElementById('fx-front');
-  back.width = front.width = W; back.height = front.height = H;
-  var bx = back.getContext('2d'), fx = front.getContext('2d');
+  var bx = window.yummyCanvas(back), fx = window.yummyCanvas(front);
   var PET = ['255,190,214', '255,255,255', '255,214,230', '232,220,255'];
   function petal(isFront, init) {
     return { x: rnd(-60, W + 60), y: init ? rnd(-H, H) : rnd(-80, -20), s: isFront ? rnd(7, 11) : rnd(4, 8),
@@ -72,8 +72,8 @@
              a: isFront ? rnd(.5, .75) : rnd(.35, .7) };
   }
   var backP = [], frontP = [];
-  for (var p = 0; p < 70; p++) backP.push(petal(false, true));
-  for (p = 0; p < 14; p++) frontP.push(petal(true, true));
+  for (var p = 0; p < (LITE ? 45 : 70); p++) backP.push(petal(false, true));
+  for (p = 0; p < (LITE ? 9 : 14); p++) frontP.push(petal(true, true));
 
   function drawPetals(ctx, arr, isFront, dt, tm) {
     for (var i = 0; i < arr.length; i++) {
@@ -84,7 +84,7 @@
       ctx.save();
       ctx.translate(x, q.y); ctx.rotate(q.rot);
       ctx.scale(1, Math.abs(Math.sin(tm * q.flip + q.ph)) * .7 + .3);
-      ctx.fillStyle = 'rgba(' + q.c + ',' + q.a.toFixed(2) + ')';
+      ctx.fillStyle = q.fs || (q.fs = 'rgba(' + q.c + ',' + q.a.toFixed(2) + ')');
       ctx.beginPath();
       ctx.moveTo(0, -q.s);
       ctx.quadraticCurveTo(q.s * .9, 0, 0, q.s);
@@ -107,9 +107,8 @@
     bx.translate(x, y); bx.rotate(ang); bx.scale(f.s, f.s); bx.globalAlpha = .55;
     for (var side = -1; side <= 1; side += 2) {
       bx.save(); bx.scale(side * w, 1);
-      var g = bx.createLinearGradient(0, -14, 18, 10);
-      g.addColorStop(0, f.c[0]); g.addColorStop(1, f.c[1]);
-      bx.fillStyle = g;
+      if (!f.g) { f.g = bx.createLinearGradient(0, -14, 18, 10); f.g.addColorStop(0, f.c[0]); f.g.addColorStop(1, f.c[1]); }
+      bx.fillStyle = f.g;
       bx.beginPath(); bx.ellipse(9, -6, 10, 8, -.5, 0, 6.3); bx.fill();
       bx.beginPath(); bx.ellipse(7, 7, 7, 6, .5, 0, 6.3); bx.fill();
       bx.restore();

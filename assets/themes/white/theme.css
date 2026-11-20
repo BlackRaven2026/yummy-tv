@@ -37,7 +37,7 @@
 .price{overflow:hidden;color:#fff;background:linear-gradient(135deg,#ff9b2e 0%,#f07c00 60%,#d96a00 100%);box-shadow:0 4px 12px rgba(240,124,0,.3)}
 .price::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:tag 6s ease-in-out var(--pd,0s) infinite}
-@keyframes tag{0%,78%{left:-60%}100%{left:130%}}
+@keyframes tag{0%,78%{transform:translateX(0) skewX(-20deg)}100%{transform:translateX(475%) skewX(-20deg)}}
 .s-big .price,.s-band .price{padding:3px 16px 4px}
 
 .dish::before{content:"";position:absolute;left:12%;right:12%;bottom:1%;height:20%;border-radius:50%;

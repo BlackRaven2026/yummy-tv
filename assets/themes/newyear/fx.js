@@ -4,6 +4,7 @@
   var W = 1920, H = 1080;
   var stage = document.getElementById('stage');
   var CFG = window.YUMMY || {};
+  var LITE = document.documentElement.classList.contains('tv-live');   // live TV: a bit fewer particles
 
   /* ---------- hanging ornaments + firework zones: placed in the free space of the header ---------- */
   var STAR = '<svg viewBox="0 0 100 100"><path d="M50 4 61 38 97 38 68 59 79 94 50 73 21 94 32 59 3 38 39 38Z" fill="url(#sgx)" stroke="#fff1c9" stroke-width="2"/><defs><linearGradient id="sgx" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1c9"/><stop offset=".5" stop-color="#f6d27f"/><stop offset="1" stop-color="#c9973a"/></linearGradient></defs></svg>';
@@ -62,7 +63,8 @@
     p.setAttribute('stroke', '#3b4a33'); p.setAttribute('stroke-width', '3');
     svg.appendChild(p);
     g.appendChild(svg);
-    var k = 0;
+    var k = 0, grp = [];
+    for (i = 0; i < 3; i++) { grp[i] = document.createElement('div'); grp[i].className = 'bgrp g' + i; g.appendChild(grp[i]); }
     for (i = 0; i < swags; i++) {
       for (var j = 1; j <= perSwag; j++) {
         var t = j / (perSwag + 1);
@@ -77,17 +79,14 @@
         b.style.background = 'radial-gradient(circle at 40% 35%, #fff 0 12%, ' + rgba(c, 1) + ' 45%, ' +
           rgba([c[0] * .55 | 0, c[1] * .55 | 0, c[2] * .55 | 0], 1) + ' 100%)';
         b.style.boxShadow = '0 0 10px 3px ' + rgba(c, .75) + ', 0 0 24px 8px ' + rgba(c, .3);
-        b.style.setProperty('--t', (1.4 + Math.random() * 2.2).toFixed(2) + 's');
-        b.style.setProperty('--d', (-Math.random() * 3).toFixed(2) + 's');
-        g.appendChild(b);
+        grp[k % 3].appendChild(b);
       }
     }
   }
 
   /* ---------- canvases: stars, snow, fireworks ---------- */
   var back = document.getElementById('fx-back'), front = document.getElementById('fx-front');
-  back.width = front.width = W; back.height = front.height = H;
-  var bx = back.getContext('2d'), fx = front.getContext('2d');
+  var bx = window.yummyCanvas(back), fx = window.yummyCanvas(front);
   var zones = [[200, 60, 1720, 170]];
   placeOrnaments();
 
@@ -107,8 +106,8 @@
     };
   }
   var backSnow = [], frontSnow = [];
-  for (s = 0; s < 150; s++) backSnow.push(makeFlake(false, true));
-  for (s = 0; s < 28; s++) frontSnow.push(makeFlake(true, true));
+  for (s = 0; s < (LITE ? 95 : 150); s++) backSnow.push(makeFlake(false, true));
+  for (s = 0; s < (LITE ? 18 : 28); s++) frontSnow.push(makeFlake(true, true));
 
   // pre-rendered soft flake sprite
   var sprite = document.createElement('canvas'); sprite.width = sprite.height = 32;
@@ -137,11 +136,12 @@
 
     bx.clearRect(0, 0, W, H);
     // stars
+    bx.fillStyle = '#fff6dc';
     for (var i = 0; i < stars.length; i++) {
       var st = stars[i], al = .25 + .55 * (0.5 + 0.5 * Math.sin(tm * st.v + st.p));
-      bx.fillStyle = 'rgba(255,246,220,' + al.toFixed(3) + ')';
-      bx.fillRect(st.x, st.y, st.r, st.r);
+      bx.globalAlpha = al; bx.fillRect(st.x, st.y, st.r, st.r);
     }
+    bx.globalAlpha = 1;
     // fireworks (soft, additive)
     if (now > nextBurst) { burst(); nextBurst = now + rnd(4200, 8000); }
     bx.globalCompositeOperation = 'lighter';
@@ -378,7 +378,6 @@
           legB[i].style.display = pose ? '' : 'none';
           poses[i] = pose;
         }
-        deerEls[i].setAttribute('transform', 'translate(0,' + (Math.sin(t * 9 + i * 1.3) * 2.5).toFixed(2) + ')');
       }
       // sparkle dust from the back of the sleigh and the runner
       for (i = 0; i < 4; i++) {

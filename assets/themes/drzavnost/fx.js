@@ -52,8 +52,7 @@
 
   /* ---------- canvases ---------- */
   var back = document.getElementById('fx-back'), front = document.getElementById('fx-front');
-  back.width = front.width = W; back.height = front.height = H;
-  var bx = back.getContext('2d'), fx = front.getContext('2d');
+  var bx = window.yummyCanvas(back), fx = window.yummyCanvas(front);
   var dust = [];
   for (var i = 0; i < 90; i++) dust.push({ x: rnd(0, W), y: rnd(0, H), r: rnd(.6, 2), vy: -rnd(4, 14), sw: rnd(8, 30), p: rnd(0, 6.28), sp: rnd(.2, .6), red: Math.random() < .25 });
 
@@ -75,9 +74,7 @@
       bx.save();
       bx.translate(x, p.y); bx.rotate(tilt); bx.translate(-x, -p.y);
       bx.globalAlpha = .93;
-      bx.shadowColor = 'rgba(0,0,0,.5)'; bx.shadowBlur = 18; bx.shadowOffsetY = 8;
       window.yummyWave(bx, flag, x - FW, p.y - FH / 2, FW, FH, t, { anchor: 'right', amp: FH * .13, waves: 1.6, speed: 6 });
-      bx.shadowColor = 'transparent';
       window.yummyPole(bx, x + 3, p.y - FH / 2 - 14, p.y + FH / 2 + 80);
       bx.restore();
       for (var i = 0; i < 2; i++) sparks.push({ x: x - FW + rnd(-10, 20), y: p.y + rnd(-FH / 2, FH / 2), vx: -rnd(20, 70), vy: rnd(-15, 15), life: 0, max: rnd(.8, 1.6), r: rnd(1, 2.6) });
@@ -103,14 +100,15 @@
       var d = dust[i];
       d.y += d.vy * dt; if (d.y < -5) { d.y = H + 5; d.x = rnd(0, W); }
       var al = .2 + .4 * (0.5 + 0.5 * Math.sin(tm * 1.5 + d.p));
-      bx.fillStyle = d.red ? 'rgba(255,70,70,' + (al * .7).toFixed(3) + ')' : 'rgba(255,225,140,' + al.toFixed(3) + ')';
+      bx.globalAlpha = d.red ? al * .7 : al; bx.fillStyle = d.red ? '#ff4646' : '#ffe18c';
       bx.beginPath(); bx.arc(d.x + Math.sin(tm * d.sp + d.p) * d.sw, d.y, d.r, 0, 6.3); bx.fill();
     }
+    bx.globalAlpha = 1;
     if (BIG) drawFlight(now, dt);
     fx.clearRect(0, 0, W, H);
     if (spot) {
       window.yummyPole(fx, spot.pole, spot.top, spot.bottom);
-      fx.save(); fx.shadowColor = 'rgba(0,0,0,.5)'; fx.shadowBlur = 14; fx.shadowOffsetY = 6;
+      fx.save();
       window.yummyWave(fx, flag, spot.x, spot.y, spot.w, spot.h, tm, { amp: spot.h * .09, waves: 1.3, speed: 3 });
       fx.restore();
     }

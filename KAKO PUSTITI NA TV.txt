@@ -4,11 +4,16 @@ YUMMY – TV MENU  (3 x MAX 43MT304S, Android 11)
 This folder IS the website. Put it online once (GitHub Pages, free), point
 each TV at its page, and from then on you update the menu from home.
 
-  Page for each TV                Live (animated)     Video (for slow TVs)
-  TV 1 Palačinke & Specijaliteti  tv1.html            tv1-video.html
-  TV 2 Mini palačinke i krofnice  tv2.html            tv2-video.html
-  TV 3 Napravi svoju palačinku    tv3.html            tv3-video.html
+  Page for each TV                Live (animated)  Video            Slika (still picture)
+  TV 1 Palačinke & Specijaliteti  tv1.html         tv1-video.html   tv1-image.html
+  TV 2 Mini palačinke i krofnice  tv2.html         tv2-video.html   tv2-image.html
+  TV 3 Napravi svoju palačinku    tv3.html         tv3-video.html   tv3-image.html
   Start page (pick a TV)          index.html
+
+  Live  = animated in the TV's browser (made light enough for cheap TVs).
+  Video = the same menu as a 60 s video, loops forever.
+  Slika = a still picture of the menu – no movement, uses almost no TV
+          power, never stutters. Made automatically on every Publish.
 
 Santa flies non-stop in spiral loops from TV 1 -> TV 2 -> TV 3 and back to
 TV 1 (one lap = 30 s), tossing little party hats and gifts. Put the TVs side
@@ -27,15 +32,18 @@ TV addresses:
   TV 1  https://blackraven2026.github.io/yummy-tv/tv1.html
   TV 2  https://blackraven2026.github.io/yummy-tv/tv2.html
   TV 3  https://blackraven2026.github.io/yummy-tv/tv3.html
-  (video versions: tv1-video.html, tv2-video.html, tv3-video.html)
+  (video versions: tv1-video.html …, still pictures: tv1-image.html …)
 
 
 STEP 2 – TEST ON ONE TV FIRST
 -----------------------------
 Open https://blackraven2026.github.io/yummy-tv/ in the TV's browser, choose
 "Live" for that TV and watch for a minute.
-  - Snow, lights and Santa move smoothly  -> use the Live pages (tvX.html).
-  - Choppy / stuttering                   -> use the Video pages (tvX-video.html).
+  - Snow, lights and Santa move smoothly  -> keep Live.
+  - Choppy / stuttering                   -> try Video.
+  - Video also stutters                   -> use Slika (still picture).
+  Tip: in Fully Kiosk settings -> Web Content Settings, make sure
+  "Enable Hardware Acceleration" is ON – it makes Live and Video smoother.
 
 
 STEP 3 – SET UP EACH TV (once per TV)
@@ -53,7 +61,7 @@ STEP 3 – SET UP EACH TV (once per TV)
      Keep screen on       -> ON
      Fullscreen / hide status & navigation bar -> ON
      Web content: Autoplay videos -> ON (needed for the video pages)
-   The start page opens: pick this TV's "Live" button with the remote
+   The start page opens: pick this TV's button (Live, Video or Slika) with the remote
    (TV 1, TV 2 or TV 3). The TV remembers it. From now on, when it turns on,
    it shows "Otvaram TV 2 (Live) za 8 s..." and opens its menu by itself.
    To pick again: press OK on "Promijeni izbor" during those 8 seconds.

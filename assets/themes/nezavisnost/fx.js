@@ -28,7 +28,7 @@
     for (var i = 0; i < spots.length; i++) {
       var f = spots[i];
       window.yummyPole(fx, f.pole, f.top, f.bottom);
-      fx.save(); fx.shadowColor = 'rgba(40,0,0,.45)'; fx.shadowBlur = 14; fx.shadowOffsetY = 6;
+      fx.save();
       window.yummyWave(fx, flag, f.x, f.y, f.w, f.h, tm + f.ph, { amp: f.h * .09, waves: 1.3, speed: 3 });
       fx.restore();
     }
@@ -36,8 +36,7 @@
 
   /* ---------- canvases ---------- */
   var back = document.getElementById('fx-back'), front = document.getElementById('fx-front');
-  back.width = front.width = W; back.height = front.height = H;
-  var bx = back.getContext('2d'), fx = front.getContext('2d');
+  var bx = window.yummyCanvas(back), fx = window.yummyCanvas(front);
   var spr = document.createElement('canvas'); spr.width = spr.height = 32;
   var sc = spr.getContext('2d'), sg = sc.createRadialGradient(16, 16, 0, 16, 16, 16);
   sg.addColorStop(0, 'rgba(255,250,225,1)'); sg.addColorStop(.35, 'rgba(255,220,120,.8)'); sg.addColorStop(1, 'rgba(255,200,80,0)');

@@ -12,10 +12,19 @@
 .title{font-weight:700;letter-spacing:0;text-transform:uppercase;--title-size:76px}
 .L-split-band .title{--title-size:72px}
 .L-builder .title{--title-size:56px}
-.moon{position:absolute;z-index:0;left:1560px;top:44px;width:104px;height:104px;border-radius:50%;pointer-events:none;visibility:hidden;
-  background:transparent;box-shadow:inset 24px -8px 0 0 #f4e8c8;transform:rotate(-20deg);
-  filter:drop-shadow(0 0 14px rgba(244,232,200,.55)) drop-shadow(0 0 40px rgba(244,232,200,.25));animation:moon 6s ease-in-out infinite alternate}
-@keyframes moon{from{filter:drop-shadow(0 0 10px rgba(244,232,200,.45)) drop-shadow(0 0 30px rgba(244,232,200,.18))}to{filter:drop-shadow(0 0 18px rgba(244,232,200,.7)) drop-shadow(0 0 50px rgba(244,232,200,.3))}}
+.cameo{position:absolute;z-index:22;left:1560px;top:16px;width:118px;height:158px;pointer-events:none;visibility:hidden;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.55)) drop-shadow(0 0 18px rgba(242,220,160,.25))}
+.cameo .oval{position:absolute;left:9px;top:9px;right:9px;bottom:21px;border-radius:50%;overflow:hidden;
+  box-shadow:0 0 0 3px #c9a45c,0 0 0 5px #0e1a2c,0 0 0 7px #f2dca0,0 0 0 8px #8c6a2c}
+.cameo .oval img{width:100%;height:100%;object-fit:cover;display:block}
+.cameo .oval::after{content:"";position:absolute;inset:0;border-radius:50%;
+  background:linear-gradient(115deg,transparent 35%,rgba(255,246,220,.35) 50%,transparent 65%);background-size:260% 100%;animation:cameo 9s ease-in-out infinite}
+@keyframes cameo{0%,55%{background-position:120% 0}100%{background-position:-60% 0}}
+.cameo svg{position:absolute;left:0;bottom:0;width:118px;height:40px;overflow:visible}
+/* thin double gold frame with line-art corner ornaments */
+.nframe{position:absolute;inset:10px;z-index:3;pointer-events:none;border:1.5px solid rgba(201,164,92,.55);border-radius:6px}
+.nframe::before{content:"";position:absolute;inset:6px;border:1px solid rgba(201,164,92,.3);border-radius:4px}
+.nframe svg{position:absolute;width:92px;height:92px;overflow:visible}
 .sweep{position:absolute;z-index:2;top:-200px;left:0;width:260px;height:1480px;pointer-events:none;
   background:linear-gradient(90deg,transparent,rgba(242,220,160,.04) 45%,rgba(242,220,160,.08) 50%,rgba(242,220,160,.04) 55%,transparent);
   transform:translateX(-400px) rotate(18deg);animation:sweep 19s cubic-bezier(.45,.05,.55,.95) infinite}
@@ -47,7 +56,7 @@
 .price{overflow:hidden;color:var(--gold-hi);background:rgba(11,21,38,.55);box-shadow:0 0 0 1.5px var(--gold) inset,0 0 14px rgba(201,164,92,.18)}
 .price::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;
   background:linear-gradient(100deg,transparent,rgba(242,220,160,.35),transparent);transform:skewX(-20deg);animation:tag 7s ease-in-out var(--pd,0s) infinite}
-@keyframes tag{0%,80%{left:-60%}100%{left:130%}}
+@keyframes tag{0%,80%{transform:translateX(0) skewX(-20deg)}100%{transform:translateX(475%) skewX(-20deg)}}
 .s-big .price,.s-band .price{padding:3px 16px 4px}
 
 .dish::before{content:"";position:absolute;left:8%;right:8%;bottom:2%;height:24%;border-radius:50%;
@@ -70,3 +79,5 @@
 .card h3 .name{font-family:var(--f-title)}
 .card li .p{color:var(--gold-hi)}
 .slogan{font-family:Georgia,"Noto Serif",serif;font-style:italic;font-size:30px;color:var(--gold)}
+.L-builder .nframe svg:nth-child(n+3){display:none}
+.card h3 .name{--fn:30px}

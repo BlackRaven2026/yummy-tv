@@ -17,12 +17,6 @@
   background:linear-gradient(90deg,transparent,rgba(255,233,166,.04) 45%,rgba(255,233,166,.08) 50%,rgba(255,233,166,.04) 55%,transparent);
   transform:translateX(-400px) rotate(18deg);animation:sweep 18s cubic-bezier(.45,.05,.55,.95) infinite}
 @keyframes sweep{0%,55%{transform:translateX(-500px) rotate(18deg)}100%{transform:translateX(2300px) rotate(18deg)}}
-/* red-gold sash across the top corner */
-.sash{position:absolute;z-index:3;top:34px;right:-120px;width:520px;height:34px;transform:rotate(32deg);pointer-events:none;
-  background:linear-gradient(180deg,var(--gold) 0 5px,var(--red) 5px 29px,var(--gold) 29px);box-shadow:0 6px 18px rgba(0,0,0,.45);opacity:.95}
-.sash::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
-  background-size:40% 100%;background-repeat:no-repeat;animation:sashshine 7s ease-in-out infinite}
-@keyframes sashshine{0%,60%{background-position:-60% 0}100%{background-position:160% 0}}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 /* laurel sprigs hanging in the header */
 .laurel{position:absolute;top:0;z-index:24;pointer-events:none;width:0;height:0}
@@ -39,7 +33,7 @@
 .hline{height:4px;background:linear-gradient(90deg,transparent,var(--red) 10%,var(--red) 35%,var(--gold) 50%,var(--red) 65%,var(--red) 90%,transparent);box-shadow:0 0 12px rgba(196,3,8,.5)}
 .vsep{background:linear-gradient(180deg,transparent,var(--gold) 12%,var(--red) 50%,var(--gold) 88%,transparent);opacity:.9}
 
-.greet{flex-direction:column;align-items:flex-end;gap:2px;margin-right:60px}
+.greet{flex-direction:column;align-items:flex-end;gap:2px}
 .greet .script{color:var(--gold);font-size:calc(68px * var(--k,1));text-shadow:0 0 16px rgba(211,174,59,.4)}
 .greet .year{font-size:calc(32px * var(--k,1));letter-spacing:6px;text-transform:uppercase;color:var(--red-hi)}
 .greet.small{flex-direction:row;align-items:center;gap:16px;margin-right:0;border:1px solid var(--line);background:rgba(20,10,8,.7)}
@@ -54,7 +48,7 @@
   box-shadow:0 0 0 2px var(--gold) inset,0 4px 14px rgba(196,3,8,.35)}
 .price::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;
   background:linear-gradient(100deg,transparent,rgba(255,230,160,.55),transparent);transform:skewX(-20deg);animation:tag 6s ease-in-out var(--pd,0s) infinite}
-@keyframes tag{0%,78%{left:-60%}100%{left:130%}}
+@keyframes tag{0%,78%{transform:translateX(0) skewX(-20deg)}100%{transform:translateX(475%) skewX(-20deg)}}
 .s-big .price,.s-band .price{padding:3px 16px 4px}
 
 .dish::before{content:"";position:absolute;left:8%;right:8%;bottom:2%;height:24%;border-radius:50%;

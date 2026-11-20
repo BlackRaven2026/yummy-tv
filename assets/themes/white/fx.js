@@ -5,8 +5,16 @@
   // kitchen doodles, pancake stack and the Yummy chef (themes/shared/shop.js)
   if (window.yummyShop) window.yummyShop({ big: (window.YUMMY || {}).big !== false });
   var back = document.getElementById('fx-back');
-  back.width = W; back.height = H;
-  var bx = back.getContext('2d');
+  var bx = window.yummyCanvas(back);
+  var spr = {};
+  function bokeh(c) {
+    if (spr[c]) return spr[c];
+    var cv = document.createElement('canvas'); cv.width = cv.height = 64;
+    var g = cv.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+    gr.addColorStop(0, 'rgba(' + c + ',1)'); gr.addColorStop(1, 'rgba(' + c + ',0)');
+    g.fillStyle = gr; g.fillRect(0, 0, 64, 64);
+    return (spr[c] = cv);
+  }
   var dots = [];
   for (var i = 0; i < 26; i++) dots.push({ x: rnd(0, W), y: rnd(0, H), r: rnd(20, 70), vx: rnd(-8, 8), vy: rnd(-6, 6),
     ph: rnd(0, 6.28), a: rnd(.04, .1), c: Math.random() < .6 ? '255,170,80' : '255,210,150' });
@@ -21,10 +29,9 @@
       if (d.x < -80) d.x = W + 80; if (d.x > W + 80) d.x = -80;
       if (d.y < -80) d.y = H + 80; if (d.y > H + 80) d.y = -80;
       var a = d.a * (.7 + .3 * Math.sin(tm * .7 + d.ph));
-      var g = bx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r);
-      g.addColorStop(0, 'rgba(' + d.c + ',' + a.toFixed(3) + ')'); g.addColorStop(1, 'rgba(' + d.c + ',0)');
-      bx.fillStyle = g; bx.beginPath(); bx.arc(d.x, d.y, d.r, 0, 6.3); bx.fill();
+      bx.globalAlpha = a; bx.drawImage(bokeh(d.c), d.x - d.r, d.y - d.r, d.r * 2, d.r * 2);
     }
+    bx.globalAlpha = 1;
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);

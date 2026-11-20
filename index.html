@@ -34,23 +34,23 @@
 <body>
   <h1>Yummy <span>TV meni</span></h1>
   <p>Izaberite stranicu za ovaj televizor – samo jednom. Ovaj televizor će je zapamtiti i ubuduće je otvarati sam.
-     <b>Live</b> = animacija uživo (najljepše). <b>Video</b> = isto kao video, za slabije televizore. Daljinski: strelice + OK.</p>
+     <b>Live</b> = animacija uživo. <b>Video</b> = isti meni kao video. <b>Slika</b> = mirna slika menija, najlakše za televizor. Daljinski: strelice + OK.</p>
   <div id="auto"><span>Otvaram <b id="autoName"></b> za <b id="autoSec">8</b> s…</span>
     <button id="change" type="button">Promijeni izbor</button></div>
   <div class="grid">
     <div class="tv"><h2>TV 1</h2><small>Palačinke &amp; Specijaliteti</small>
-      <a href="tv1.html">Live</a><a class="alt" href="tv1-video.html">Video</a></div>
+      <a href="tv1.html">Live</a><a class="alt" href="tv1-video.html">Video</a><a class="alt" href="tv1-image.html">Slika</a></div>
     <div class="tv"><h2>TV 2</h2><small>Mini – Palačinke i Krofnice</small>
-      <a href="tv2.html">Live</a><a class="alt" href="tv2-video.html">Video</a></div>
+      <a href="tv2.html">Live</a><a class="alt" href="tv2-video.html">Video</a><a class="alt" href="tv2-image.html">Slika</a></div>
     <div class="tv"><h2>TV 3</h2><small>Napravi svoju palačinku</small>
-      <a href="tv3.html">Live</a><a class="alt" href="tv3-video.html">Video</a></div>
+      <a href="tv3.html">Live</a><a class="alt" href="tv3-video.html">Video</a><a class="alt" href="tv3-image.html">Slika</a></div>
   </div>
 <script>
 (function () {
   var KEY = 'yummyTvPage', saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
   var links = document.querySelectorAll('.grid a');
-  var NAMES = {"tv1.html":"TV 1 (Live)","tv1-video.html":"TV 1 (Video)","tv2.html":"TV 2 (Live)","tv2-video.html":"TV 2 (Video)","tv3.html":"TV 3 (Live)","tv3-video.html":"TV 3 (Video)"};
+  var NAMES = {"tv1.html":"TV 1 (Live)","tv1-video.html":"TV 1 (Video)","tv1-image.html":"TV 1 (Slika)","tv2.html":"TV 2 (Live)","tv2-video.html":"TV 2 (Video)","tv2-image.html":"TV 2 (Slika)","tv3.html":"TV 3 (Live)","tv3-video.html":"TV 3 (Video)","tv3-image.html":"TV 3 (Slika)"};
   for (var i = 0; i < links.length; i++) {
     links[i].addEventListener('click', function () {
       try { localStorage.setItem(KEY, this.getAttribute('href')); } catch (e) {}

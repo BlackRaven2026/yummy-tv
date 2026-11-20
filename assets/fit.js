@@ -7,6 +7,35 @@
   var W = 1920, H = 1080;
   var stage = document.getElementById('stage');
   var cfg = window.YUMMY || {};
+  var q = location.search;
+
+  /* ---------- performance for cheap TVs ----------
+     ?video  = recording a video (full quality, virtual time – leave everything alone)
+     ?still  = making the picture version (no big moving animation)
+     live    = canvas effects at half resolution and max 30 frames/s, which a weak TV can keep up with */
+  var VIDEO = /[?&]video\b/.test(q), STILL = /[?&]still\b/.test(q);
+  if (STILL) cfg.big = false;
+  var LIVE = !VIDEO && !STILL;
+  window.yummyCanvas = function (c) {
+    var s = LIVE ? 0.5 : 1;
+    c.width = W * s; c.height = H * s;
+    var x = c.getContext('2d');
+    x.setTransform(s, 0, 0, s, 0, 0);
+    return x;
+  };
+  if (LIVE) {
+    var nativeRaf = window.requestAnimationFrame.bind(window), gateT = -1, lastT = 0;
+    window.__nativeRaf = nativeRaf;
+    var open = function (t) {
+      if (t === gateT) return true;
+      if (t - lastT >= 31) { lastT = t; gateT = t; return true; }
+      return false;
+    };
+    window.requestAnimationFrame = function (cb) {
+      return nativeRaf(function tick(t) { if (open(t)) cb(t); else nativeRaf(tick); });
+    };
+    document.documentElement.classList.add('tv-live');
+  }
 
   function scale() {
     var s = Math.min(window.innerWidth / W, window.innerHeight / H);
@@ -78,7 +107,7 @@
   window.yummyWave = function (ctx, img, x, y, w, h, t, o) {
     o = o || {};
     if (!img || !(img.naturalWidth || img.width)) return;
-    var amp = o.amp != null ? o.amp : h * 0.1, waves = o.waves || 1.5, speed = o.speed || 3.4, step = 3;
+    var amp = o.amp != null ? o.amp : h * 0.1, waves = o.waves || 1.5, speed = o.speed || 3.4, step = o.step || (LIVE ? 7 : 3);
     var iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height, right = o.anchor === 'right';
     for (var sx = 0; sx < w; sx += step) {
       var sw = Math.min(step + 1, w - sx);

@@ -38,10 +38,12 @@
 /* garland */
 #garland{position:absolute;left:0;top:0;width:1920px;height:80px;z-index:25;pointer-events:none}
 #garland svg{position:absolute;inset:0}
+.bgrp{position:absolute;inset:0;animation:twinkle 2.6s ease-in-out infinite alternate}
+.bgrp.g1{animation-duration:3.3s;animation-delay:-1.2s}.bgrp.g2{animation-duration:1.9s;animation-delay:-.6s}
 .bulb{position:absolute;width:12px;height:18px;margin:-2px 0 0 -6px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;transform-origin:50% 0;
-  animation:twinkle var(--t,2.4s) ease-in-out var(--d,0s) infinite alternate}
+}
 .bulb::before{content:"";position:absolute;left:3px;top:-4px;width:6px;height:5px;border-radius:1px;background:#6b5a3a}
-@keyframes twinkle{0%{opacity:.35;filter:saturate(.7)}100%{opacity:1;filter:saturate(1.15)}}
+@keyframes twinkle{0%{opacity:.4}100%{opacity:1}}
 
 /* hanging ornaments */
 .orn{position:absolute;top:0;z-index:24;width:0;height:0;pointer-events:none}
@@ -72,7 +74,7 @@
 
 .greet .script{color:var(--gold);text-shadow:0 0 18px rgba(246,210,127,.45)}
 .greet .year{background-image:linear-gradient(180deg,#fff6dc 0%,var(--gold) 45%,var(--gold-lo) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 0 12px rgba(246,210,127,.5));animation:glow 3.2s ease-in-out infinite alternate}
+  filter:drop-shadow(0 0 12px rgba(246,210,127,.5))}
 @keyframes glow{from{filter:drop-shadow(0 0 6px rgba(246,210,127,.35))}to{filter:drop-shadow(0 0 18px rgba(246,210,127,.85))}}
 .greet.small{border:1px solid var(--line);background:rgba(8,14,36,.75)}
 
@@ -84,7 +86,7 @@
   box-shadow:0 0 0 1px rgba(255,241,201,.6) inset,0 4px 16px rgba(246,190,90,.28)}
 .price::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:tag 6s ease-in-out var(--pd,0s) infinite}
-@keyframes tag{0%,78%{left:-60%}100%{left:130%}}
+@keyframes tag{0%,78%{transform:translateX(0) skewX(-20deg)}100%{transform:translateX(475%) skewX(-20deg)}}
 .s-big .price,.s-band .price{padding:3px 16px 4px}
 
 .dish::before{content:"";position:absolute;left:8%;right:8%;bottom:2%;height:26%;border-radius:50%;

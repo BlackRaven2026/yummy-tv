@@ -25,8 +25,7 @@
   }
 
   var back = document.getElementById('fx-back');
-  back.width = W; back.height = H;
-  var bx = back.getContext('2d');
+  var bx = window.yummyCanvas(back);
   var dust = [];
   function mote(init) {
     return { x: rnd(0, W), y: init ? rnd(0, H) : H + 10, r: rnd(.8, 2.4), vy: -rnd(6, 18), sway: rnd(10, 40), ph: rnd(0, 6.28),
@@ -43,9 +42,10 @@
       q.y += q.vy * dt;
       if (q.y < -10) { dust[i] = mote(false); continue; }
       var a = q.a * (.6 + .4 * Math.sin(tm * 1.3 + q.ph));
-      bx.fillStyle = q.warm ? 'rgba(255,150,60,' + a.toFixed(3) + ')' : 'rgba(255,255,255,' + (a * .7).toFixed(3) + ')';
+      bx.globalAlpha = q.warm ? a : a * .7; bx.fillStyle = q.warm ? '#ff963c' : '#ffffff';
       bx.beginPath(); bx.arc(q.x + Math.sin(tm * q.sp + q.ph) * q.sway, q.y, q.r, 0, 6.3); bx.fill();
     }
+    bx.globalAlpha = 1;
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);

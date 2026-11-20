@@ -104,8 +104,7 @@
 
   /* ---------- canvases: embers + golden motes ---------- */
   var back = document.getElementById('fx-back'), front = document.getElementById('fx-front');
-  back.width = front.width = W; back.height = front.height = H;
-  var bx = back.getContext('2d'), fx = front.getContext('2d');
+  var bx = window.yummyCanvas(back), fx = window.yummyCanvas(front);
   var glow = document.createElement('canvas'); glow.width = glow.height = 32;
   var gc = glow.getContext('2d'), gg = gc.createRadialGradient(16, 16, 0, 16, 16, 16);
   gg.addColorStop(0, 'rgba(255,240,200,1)'); gg.addColorStop(.3, 'rgba(255,170,70,.85)'); gg.addColorStop(1, 'rgba(255,110,30,0)');
@@ -172,8 +171,9 @@
     bx.clearRect(0, 0, W, H);
     for (var i = 0; i < motes.length; i++) {
       var m = motes[i], al = .15 + .35 * (0.5 + 0.5 * Math.sin(tm * m.v + m.p));
-      bx.fillStyle = 'rgba(255,226,160,' + al.toFixed(3) + ')'; bx.fillRect(m.x, m.y, m.r, m.r);
+      bx.globalAlpha = al; bx.fillStyle = '#ffe2a0'; bx.fillRect(m.x, m.y, m.r, m.r);
     }
+    bx.globalAlpha = 1;
     bx.globalCompositeOperation = 'lighter';
     for (i = 0; i < embers.length; i++) {
       var q = embers[i];
