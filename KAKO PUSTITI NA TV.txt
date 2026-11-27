@@ -1,0 +1,104 @@
+YUMMY – TV MENU  (3 x MAX 43MT304S, Android 11)
+========================================================
+
+This folder IS the website. Put it online once (GitHub Pages, free), point
+each TV at its page, and from then on you update the menu from home.
+
+  Page for each TV                Live (animated)  Video            Slika (still picture)
+  TV 1 Palačinke & Specijaliteti  tv1.html         tv1-video.html   tv1-image.html
+  TV 2 Mini palačinke i krofnice  tv2.html         tv2-video.html   tv2-image.html
+  TV 3 Napravi svoju palačinku    tv3.html         tv3-video.html   tv3-image.html
+  Start page (pick a TV)          index.html
+
+  Live  = animated in the TV's browser (made light enough for cheap TVs).
+  Video = the same menu as a 60 s video, loops forever.
+  Slika = a still picture of the menu – no movement, uses almost no TV
+          power, never stutters. Made automatically on every Publish.
+
+Santa flies non-stop in spiral loops from TV 1 -> TV 2 -> TV 3 and back to
+TV 1 (one lap = 30 s), tossing little party hats and gifts. Put the TVs side
+by side in order 1 - 2 - 3. Both the live and the video pages are timed by
+the clock, so the 3 TVs stay in step by themselves (even if one TV uses the
+live page and another the video page).
+
+
+STEP 1 – ONLINE (done)
+---------------------
+The menu is published from GitHub account BlackRaven2026:
+  repository: https://github.com/BlackRaven2026/yummy-tv
+  website:    https://blackraven2026.github.io/yummy-tv/
+
+TV addresses:
+  TV 1  https://blackraven2026.github.io/yummy-tv/tv1.html
+  TV 2  https://blackraven2026.github.io/yummy-tv/tv2.html
+  TV 3  https://blackraven2026.github.io/yummy-tv/tv3.html
+  (video versions: tv1-video.html …, still pictures: tv1-image.html …)
+
+
+STEP 2 – TEST ON ONE TV FIRST
+-----------------------------
+Open https://blackraven2026.github.io/yummy-tv/ in the TV's browser, choose
+"Live" for that TV and watch for a minute.
+  - Snow, lights and Santa move smoothly  -> keep Live.
+  - Choppy / stuttering                   -> try Video.
+  - Video also stutters                   -> use Slika (still picture).
+  Tip: in Fully Kiosk settings -> Web Content Settings, make sure
+  "Enable Hardware Acceleration" is ON – it makes Live and Video smoother.
+
+
+STEP 3 – SET UP EACH TV (once per TV)
+-------------------------------------
+1. TV settings -> Date & time -> "Automatic" (internet time). This is what
+   keeps the 3 TVs in step.
+2. TV settings -> turn OFF sleep timer, auto power off, "no signal" standby
+   and eco / power-saving standby.
+3. Install "Fully Kiosk Browser" from the TV's app store (free; you do NOT
+   need the PLUS licence – just leave PLUS features switched off).
+4. Open Fully Kiosk. In its settings:
+     Start URL            -> https://blackraven2026.github.io/yummy-tv/
+                             (the SAME short address on all 3 TVs)
+     Launch on boot       -> ON (the menu starts when the TV turns on)
+     Keep screen on       -> ON
+     Fullscreen / hide status & navigation bar -> ON
+     Web content: Autoplay videos -> ON (needed for the video pages)
+   The start page opens: pick this TV's button (Live, Video or Slika) with the remote
+   (TV 1, TV 2 or TV 3). The TV remembers it. From now on, when it turns on,
+   it shows "Otvaram TV 2 (Live) za 8 s..." and opens its menu by itself.
+   To pick again: press OK on "Promijeni izbor" during those 8 seconds.
+   Typing tip: plug a USB keyboard into the TV, or use the phone keyboard
+   in the Google TV app (same Wi-Fi) to type/paste the address.
+5. Restart the TV once to check it starts straight into the menu.
+
+
+STEP 4 – UPDATING FROM HOME  (Yummy TV Studio)
+----------------------------------------------
+Do NOT edit the files in this folder by hand any more – they are made by
+the studio and get overwritten.
+
+  1. Open the folder  Yummy Website \ tv-menu-studio  and double-click
+     "START STUDIO.bat". The editor opens in your browser
+     (http://localhost:5178). Keep the black window open while you work.
+  2. Change prices, names, ingredients, pictures; add or remove items;
+     hide sold-out items (eye button); pick a theme at the top
+     (Nova godina, Uskrs, Yummy crni, Yummy bijeli).
+     Click anything on the TV picture to jump straight to it.
+     Everything saves by itself. Made a mistake?  ↶ Undo.
+  3. Click "⬆ Publish to TVs" -> "Upload to TVs". Done.
+  4. Only if some TV uses the VIDEO page: click "🎬 Videos" ->
+     "Make new videos" (about 4 min per TV), then "Upload to TVs".
+
+If uploading ever fails: open GitHub Desktop (signed in as BlackRaven2026),
+File -> Add local repository -> choose this "tv-menu-site" folder,
+then press "Push origin".
+
+Good to know:
+  - If the internet goes down, the TVs keep showing the menu they have.
+  - Each TV also refreshes itself every morning at 06:00.
+  - Updates can take up to ~15 minutes to appear (GitHub's cache).
+
+
+BACKUP – WITHOUT INTERNET (USB)
+-------------------------------
+Copy video/Yummy-tv1.mp4 (tv2, tv3) to a USB stick, play it in the TV's
+media player with "Repeat / Ponavljanje" ON. Each is a 60 s seamless loop.
+(No remote updates and no syncing between TVs this way.)

@@ -1,0 +1,84 @@
+/* Theme: Njegošev dan (13. novembar) – Lovćen at night, stars, parchment & gold */
+:root{
+  --night:#0e1a2c;--crimson:#a3201d;--crimson-hi:#c8372f;--gold:#c9a45c;--gold-hi:#f2dca0;--gold-lo:#8c6a2c;--parch:#efe3c8;--stone:#8fa0b8;
+  --ink:#efe3c8;--line:rgba(201,164,92,.38);--card:rgba(239,227,200,.045);
+  --f-title:Georgia,"Noto Serif","Times New Roman",serif;
+  --pad-top:60px;
+  --stage-bg:
+    radial-gradient(520px 300px at 82% 6%, rgba(163,32,29,.22), transparent 70%),
+    radial-gradient(1000px 500px at 78% 6%, rgba(242,220,160,.10), transparent 70%),
+    radial-gradient(1300px 700px at 50% 40%, #1a2b45 0%, rgba(26,43,69,0) 72%),
+    linear-gradient(180deg,#0b1526 0%,#132339 55%,#0a1220 100%);
+}
+.title{font-weight:700;letter-spacing:0;text-transform:uppercase;--title-size:76px}
+.L-split-band .title{--title-size:72px}
+.L-builder .title{--title-size:56px}
+.cameo{position:absolute;z-index:22;left:1560px;top:10px;width:140px;height:186px;pointer-events:none;visibility:hidden;
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,.6)) drop-shadow(0 0 22px rgba(200,55,47,.28))}
+.cameo .oval{position:absolute;left:11px;top:11px;right:11px;bottom:25px;border-radius:50%;overflow:hidden;background:#3a1a12;
+  box-shadow:0 0 0 3px #f2dca0,0 0 0 7px #a3201d,0 0 0 9px #c9a45c,0 0 0 10px #5a3a14}
+.cameo .oval img{width:100%;height:100%;object-fit:cover;display:block}
+.cameo .oval::after{content:"";position:absolute;top:0;right:0;bottom:0;left:0;border-radius:50%;
+  background:linear-gradient(115deg,transparent 35%,rgba(255,246,220,.35) 50%,transparent 65%);background-size:260% 100%;animation:cameo 9s ease-in-out infinite}
+@keyframes cameo{0%,55%{background-position:120% 0}100%{background-position:-60% 0}}
+.cameo svg{position:absolute;left:11px;bottom:0;width:118px;height:40px;overflow:visible}
+/* thin double gold frame with line-art corner ornaments */
+.nframe{position:absolute;top:10px;right:10px;bottom:10px;left:10px;z-index:3;pointer-events:none;border:1.5px solid rgba(201,164,92,.55);border-radius:6px}
+.nframe::before{content:"";position:absolute;top:6px;right:6px;bottom:6px;left:6px;border:1px solid rgba(201,164,92,.3);border-radius:4px}
+.nframe svg{position:absolute;width:92px;height:92px;overflow:visible}
+.sweep{position:absolute;z-index:2;top:-200px;left:0;width:260px;height:1480px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(242,220,160,.04) 45%,rgba(242,220,160,.08) 50%,rgba(242,220,160,.04) 55%,transparent);
+  transform:translateX(-400px) rotate(18deg);animation:sweep 19s cubic-bezier(.45,.05,.55,.95) infinite}
+@keyframes sweep{0%,55%{transform:translateX(-500px) rotate(18deg)}100%{transform:translateX(2300px) rotate(18deg)}}
+/* Lovćen – mountain ridges along the bottom (drawn by fx.js) */
+.lovcen{position:absolute;left:0;bottom:0;width:1920px;height:300px;z-index:1;pointer-events:none}
+.lovcen svg{position:absolute;top:0;right:0;bottom:0;left:0}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+#comet{position:absolute;left:0;top:0;z-index:27;pointer-events:none}
+
+/* ---------- text ---------- */
+.t-acc{color:var(--gold);text-shadow:0 0 18px rgba(201,164,92,.35)}
+.t-main{color:var(--parch)}
+.hline{height:2px;background:linear-gradient(90deg,transparent,var(--gold) 15%,var(--gold-hi) 50%,var(--gold) 85%,transparent)}
+.hline::after{content:"";display:block;width:14px;height:14px;margin:-6px auto 0;transform:rotate(45deg);border:2px solid var(--gold);background:var(--crimson)}
+.vsep{width:1px;background:linear-gradient(180deg,transparent,var(--gold) 15%,var(--gold-hi) 50%,var(--gold) 85%,transparent);opacity:.8}
+
+.greet{flex-direction:column;align-items:flex-end;gap:4px}
+.greet .script{color:var(--gold-hi);font-size:calc(70px * var(--k,1));text-shadow:0 0 18px rgba(242,220,160,.3)}
+.greet .year{font-family:Georgia,"Noto Serif",serif;font-weight:400;font-style:italic;font-size:calc(28px * var(--k,1));letter-spacing:3px;color:var(--gold)}
+.greet.small{flex-direction:row;align-items:center;gap:16px;border:1px solid var(--line);background:rgba(11,21,38,.75)}
+.greet.small .script{font-size:42px}
+.greet.small .year{font-size:22px}
+
+.name{font-family:var(--f-title);font-weight:700;letter-spacing:1px;color:var(--gold-hi)}
+.ingr{color:var(--parch);opacity:.92}
+.ingr small{color:var(--gold)}
+.w{color:var(--gold)}
+.price{overflow:hidden;color:var(--gold-hi);background:rgba(11,21,38,.55);box-shadow:0 0 0 1.5px var(--gold) inset,0 0 14px rgba(201,164,92,.18)}
+.price::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;
+  background:linear-gradient(100deg,transparent,rgba(242,220,160,.35),transparent);transform:skewX(-20deg);animation:tag 7s ease-in-out var(--pd,0s) infinite}
+@keyframes tag{0%,80%{transform:translateX(0) skewX(-20deg)}100%{transform:translateX(475%) skewX(-20deg)}}
+.s-big .price,.s-band .price{padding:3px 16px 4px}
+
+.dish::before{content:"";position:absolute;left:8%;right:8%;bottom:2%;height:24%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(242,220,160,.22),transparent);filter:blur(2px)}
+.dish img{filter:drop-shadow(0 10px 14px rgba(0,0,0,.6))}
+
+.panel{border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.deco{width:.5em;height:.5em;margin-right:12px;transform:rotate(45deg);border:2px solid var(--gold);background:var(--crimson)}
+.sub{color:var(--parch);font-family:Georgia,"Noto Serif",serif;font-style:italic}
+.sub b{color:var(--gold-hi);font-style:normal;font-family:Montserrat,sans-serif}
+
+.band{background:linear-gradient(180deg,rgba(11,21,38,.55),rgba(11,21,38,.25))}
+.band-h{background:#0f1c30;border:1px solid var(--gold);color:var(--parch);font-family:var(--f-title)}
+.band-h .acc{color:var(--gold)}
+
+.tag{color:var(--gold);font-family:Georgia,"Noto Serif",serif;font-style:italic;text-transform:none;letter-spacing:1px}
+.tag b{color:var(--parch)}
+.logo{filter:drop-shadow(0 0 16px rgba(242,220,160,.3))}
+.contact{background:rgba(11,21,38,.75);box-shadow:0 0 0 1.5px var(--gold) inset;color:var(--gold-hi)}
+.card h3 .name{font-family:var(--f-title)}
+.card li .p{color:var(--gold-hi)}
+.slogan{font-family:Georgia,"Noto Serif",serif;font-style:italic;font-size:30px;color:var(--gold)}
+.L-builder .nframe svg:nth-child(n+3){display:none}
+.card h3 .name{--fn:30px}

@@ -1,0 +1,908 @@
+{
+  "format": 1,
+  "theme": "newyear",
+  "settings": {
+    "phone": "+382 68 418 544",
+    "instagram": "yummy_tivat",
+    "tagline": "Najbolje palačinke u *Tivtu*",
+    "logo": "logo.png",
+    "glovo": "glovo.png",
+    "calendar": {
+      "auto": false,
+      "baseTheme": "black",
+      "rebuildVideos": false,
+      "events": [
+        {
+          "name": "Nova godina",
+          "theme": "newyear",
+          "type": "date",
+          "start": "12-31",
+          "end": "01-01"
+        },
+        {
+          "name": "Božić",
+          "theme": "bozic",
+          "type": "date",
+          "start": "01-06",
+          "end": "01-08"
+        },
+        {
+          "name": "Uskrs",
+          "theme": "easter",
+          "type": "easter",
+          "before": 0,
+          "after": 0
+        },
+        {
+          "name": "Dan nezavisnosti",
+          "theme": "nezavisnost",
+          "type": "date",
+          "start": "05-21",
+          "end": "05-21"
+        },
+        {
+          "name": "Dan državnosti",
+          "theme": "drzavnost",
+          "type": "date",
+          "start": "07-13",
+          "end": "07-13"
+        },
+        {
+          "name": "Njegošev dan",
+          "theme": "njegos",
+          "type": "date",
+          "start": "11-13",
+          "end": "11-13"
+        }
+      ]
+    },
+    "qr": {
+      "instagram": false,
+      "google": false,
+      "glovo": false,
+      "urls": {
+        "instagram": "https://www.instagram.com/yummy_tivat/",
+        "google": "",
+        "glovo": ""
+      },
+      "layout": {
+        "corner": "br",
+        "size": 6.4,
+        "opacity": 0.82,
+        "gap": 1.1,
+        "labels": true,
+        "order": [
+          "instagram",
+          "google",
+          "glovo"
+        ]
+      }
+    },
+    "promo": {
+      "enabled": false,
+      "intervalMin": 10,
+      "durationSec": 12,
+      "items": [
+        {
+          "title": "Novo!",
+          "sub": "Pogledajte naš meni",
+          "qr": "instagram",
+          "image": "",
+          "mode": "dish",
+          "dishId": "prrjccn",
+          "showPrice": true,
+          "on": true
+        },
+        {
+          "mode": "dish",
+          "title": "Današnji specijalitet",
+          "sub": "",
+          "qr": "",
+          "image": "",
+          "dishId": "",
+          "showPrice": true,
+          "scale": 1.25,
+          "durationSec": 0,
+          "on": true
+        },
+        {
+          "mode": "dish",
+          "title": "Današnji specijalitet",
+          "sub": "",
+          "qr": "",
+          "image": "",
+          "dishId": "",
+          "showPrice": true,
+          "scale": 1.25,
+          "durationSec": 0,
+          "on": true
+        }
+      ]
+    }
+  },
+  "themes": {
+    "newyear": {
+      "greeting": "Srećna Nova",
+      "year": "2027",
+      "slogan": "Srećni praznici od Yummy ekipe!",
+      "big": true,
+      "showGreet": true,
+      "titles": {
+        "0": {
+          "on": false,
+          "a": "Palačinke &",
+          "b": "Specijaliteti"
+        },
+        "1": {
+          "on": false,
+          "a": "Mini –",
+          "b": "Palačinke i Krofnice"
+        },
+        "2": {
+          "on": false,
+          "a": "Napravi svoju",
+          "b": "palačinku"
+        }
+      }
+    },
+    "easter": {
+      "greeting": "Srećan Vaskrs",
+      "year": "",
+      "slogan": "Srećni praznici od Yummy ekipe!",
+      "big": true,
+      "showGreet": true,
+      "titles": {
+        "1": {
+          "on": false,
+          "a": "Mini –",
+          "b": "Palačinke i Krofnice"
+        },
+        "2": {
+          "on": false,
+          "a": "Napravi svoju",
+          "b": "palačinku"
+        }
+      }
+    },
+    "black": {
+      "greeting": "",
+      "year": "",
+      "slogan": "Najbolje palačinke u Tivtu",
+      "showGreet": true,
+      "big": true
+    },
+    "white": {
+      "greeting": "",
+      "year": "",
+      "slogan": "Najbolje palačinke u Tivtu",
+      "big": true,
+      "showGreet": true,
+      "titles": {
+        "0": {
+          "on": true,
+          "a": "Palačinke &",
+          "b": "Specijaliteti"
+        }
+      }
+    },
+    "nezavisnost": {
+      "greeting": "Dan nezavisnosti",
+      "year": "21. maj",
+      "slogan": "Živjela Crna Gora!",
+      "big": true,
+      "showGreet": true,
+      "titles": {
+        "1": {
+          "on": false,
+          "a": "Mini –",
+          "b": "Palačinke i Krofnice"
+        },
+        "2": {
+          "on": false,
+          "a": "Napravi svoju",
+          "b": "palačinku"
+        }
+      }
+    },
+    "bozic": {
+      "greeting": "Hristos se rodi",
+      "year": "",
+      "slogan": "Srećan Božić!",
+      "big": true,
+      "showGreet": true,
+      "titles": {
+        "0": {
+          "on": false,
+          "a": "Palačinke &",
+          "b": "Specijaliteti"
+        },
+        "1": {
+          "on": false,
+          "a": "Mini –",
+          "b": "Palačinke i Krofnice"
+        },
+        "2": {
+          "on": false,
+          "a": "Napravi svoju",
+          "b": "palačinku"
+        }
+      }
+    },
+    "drzavnost": {
+      "greeting": "Dan državnosti",
+      "year": "13. jul",
+      "slogan": "Srećan Dan državnosti!",
+      "big": true,
+      "showGreet": true,
+      "titles": {
+        "0": {
+          "on": false,
+          "a": "Palačinke &",
+          "b": "Specijaliteti"
+        },
+        "1": {
+          "on": false,
+          "a": "Mini –",
+          "b": "Palačinke i Krofnice"
+        }
+      }
+    },
+    "njegos": {
+      "big": true,
+      "showGreet": true,
+      "titles": {
+        "0": {
+          "on": false,
+          "a": "Palačinke &",
+          "b": "Specijaliteti"
+        },
+        "1": {
+          "on": false,
+          "a": "Mini –",
+          "b": "Palačinke i Krofnice"
+        },
+        "2": {
+          "on": false,
+          "a": "Napravi svoju",
+          "b": "palačinku"
+        }
+      }
+    }
+  },
+  "screens": [
+    {
+      "name": "TV 1",
+      "layout": "split",
+      "title": {
+        "a": "Palačinke &",
+        "b": "Specijaliteti",
+        "accentFirst": true
+      },
+      "sections": [
+        {
+          "area": "left",
+          "style": "big",
+          "columns": 2,
+          "title": "",
+          "note": "",
+          "items": [
+            {
+              "name": "Dubai",
+              "ingr": "Nutela, pistaći, kadaif",
+              "price": "7,10",
+              "weight": "500g",
+              "img": "r_dubai.png",
+              "hidden": false,
+              "id": "67pmvi1",
+              "imgPrint": "r_dubai-print.png"
+            },
+            {
+              "name": "Kapri Spagetti",
+              "ingr": "Kinder namaz, plazma, šumsko voće, sladoled vanila",
+              "price": "6,20",
+              "weight": "700g",
+              "img": "r_kapri.png",
+              "id": "btrg4qs"
+            },
+            {
+              "name": "Suši",
+              "ingr": "Kinder namaz, banana, nutela, malina",
+              "price": "6,00",
+              "weight": "450g",
+              "img": "r_susi.png",
+              "id": "ys5pl21",
+              "imgPrint": "r_susi-print.png"
+            },
+            {
+              "name": "Strawberry Ice Spagetti",
+              "ingr": "Bijela čokolada, krem, jagoda, sladoled vanila",
+              "price": "6,40",
+              "weight": "700g",
+              "img": "r_straw.png",
+              "id": "2jhktfn"
+            },
+            {
+              "name": "Vanila Flex",
+              "ingr": "Mliječna čokolada, puding od vanile, kukuruzne pahuljice, banana",
+              "price": "5,80",
+              "weight": "500g",
+              "img": "r_flex.png",
+              "id": "prrjccn",
+              "imgPrint": "r_flex-print.png"
+            },
+            {
+              "name": "Banana Spagetti",
+              "ingr": "Mliječna čokolada, bijela čokolada, plazma u mlijeku, banana, Sladoled Vanila",
+              "price": "6,80",
+              "weight": "700g",
+              "img": "r_banana.png",
+              "id": "b760g78",
+              "hidden": false
+            },
+            {
+              "name": "Yummy",
+              "ingr": "Pistaći namaz, kinder krem, vanila puding, plazma",
+              "price": "5,90",
+              "weight": "500g",
+              "img": "r_yummy.png",
+              "id": "02aepqn",
+              "imgPrint": "r_yummy-print.png"
+            }
+          ],
+          "id": "ivgfzke"
+        },
+        {
+          "area": "right",
+          "style": "medium",
+          "columns": 2,
+          "title": "",
+          "note": "",
+          "items": [
+            {
+              "name": "Nutella Plazma",
+              "ingr": "",
+              "price": "4,50",
+              "weight": "300g",
+              "img": "c_nutella.png",
+              "id": "ibpnufe",
+              "imgPrint": "c_nutella-print.png"
+            },
+            {
+              "name": "Krem, Banana Plazma",
+              "ingr": "",
+              "price": "5,10",
+              "weight": "350g",
+              "img": "c_banana.png",
+              "id": "75ujyvs",
+              "imgPrint": "c_banana-print.png"
+            },
+            {
+              "name": "Plazma u mlijeku",
+              "ingr": "Krem i plazma u mlijeku",
+              "price": "4,50",
+              "weight": "350g",
+              "img": "c_plazma.png",
+              "id": "elstx6x",
+              "imgPrint": "c_plazma-print.png"
+            },
+            {
+              "name": "Cheesecake",
+              "ingr": "Bijela čokolada, pavlaka, šumsko voće, plazma",
+              "price": "4,90",
+              "weight": "400g",
+              "img": "c_cheese.png",
+              "id": "xowssu2",
+              "imgPrint": "c_cheese-print.png"
+            },
+            {
+              "name": "Bueno",
+              "ingr": "Kinder namaz, plazma u mlijeku",
+              "note": "(jagoda / banana / malina)",
+              "price": "5,40",
+              "weight": "350g",
+              "img": "c_bueno.png",
+              "id": "xey1h41",
+              "imgPrint": "c_bueno-print.png"
+            },
+            {
+              "name": "Vanilla Sky",
+              "ingr": "Krem, puding od vanile, plazma",
+              "price": "4,70",
+              "weight": "350g",
+              "img": "c_vanilla.png",
+              "id": "mdf2izs",
+              "imgPrint": "c_vanilla-print.png"
+            },
+            {
+              "name": "Pistać",
+              "ingr": "Pistaći namaz, kokos, pistaći u komadu",
+              "price": "5,50",
+              "weight": "400g",
+              "img": "c_pistac.png",
+              "id": "7ou4juo",
+              "imgPrint": "c_pistac-print.png"
+            },
+            {
+              "name": "Raffaello",
+              "ingr": "Bijeli krem, kokos, badem",
+              "price": "5,10",
+              "weight": "400g",
+              "img": "c_raff.png",
+              "id": "hrxvuk3",
+              "imgPrint": "c_raff-print.png"
+            },
+            {
+              "name": "Snikers",
+              "ingr": "Krema, karamela, kikiriki",
+              "price": "5,00",
+              "weight": "400g",
+              "img": "c_snikers.png",
+              "id": "r3atxj0",
+              "imgPrint": "c_snikers-print.png"
+            },
+            {
+              "name": "Schwarzwald",
+              "ingr": "Krem, šlag, višnja, plazma",
+              "price": "4,90",
+              "weight": "350g",
+              "img": "c_schwarz.png",
+              "id": "dkda8m0",
+              "imgPrint": "c_schwarz-print.png"
+            }
+          ],
+          "id": "46po0lb"
+        }
+      ]
+    },
+    {
+      "name": "TV 2",
+      "layout": "split-band",
+      "title": {
+        "a": "Mini –",
+        "b": "Palačinke i Krofnice",
+        "accentFirst": false
+      },
+      "sections": [
+        {
+          "area": "left",
+          "style": "tiles",
+          "columns": 3,
+          "title": "Mini holandske palačinke",
+          "note": "15 kom",
+          "items": [
+            {
+              "name": "Nutela Plazma",
+              "price": "5,20",
+              "weight": "500g",
+              "img": "m_nutela.png",
+              "id": "6kb06mb"
+            },
+            {
+              "name": "Oreo",
+              "price": "5,20",
+              "weight": "500g",
+              "img": "m_oreo.png",
+              "id": "uju7d7a"
+            },
+            {
+              "name": "Nutela Collor",
+              "price": "5,00",
+              "weight": "500g",
+              "img": "m_collor.png",
+              "id": "j5fb88d"
+            },
+            {
+              "name": "Jagoda Tart",
+              "ingr": "Kinder namaz, jagoda, plazma",
+              "price": "6,10",
+              "weight": "500g",
+              "img": "m_jagoda.png",
+              "id": "bxzztqa"
+            },
+            {
+              "name": "Pistaći Jagoda",
+              "ingr": "Bijeli krem, pistaći u komadu, jagoda",
+              "price": "6,30",
+              "weight": "500g",
+              "img": "m_pistjag.png",
+              "id": "pn7mx1m"
+            },
+            {
+              "name": "Banana Plazma",
+              "ingr": "Krem, banana, plazma",
+              "price": "5,70",
+              "weight": "500g",
+              "img": "m_banana.png",
+              "id": "ja1r54l"
+            }
+          ],
+          "id": "u6d610x"
+        },
+        {
+          "area": "right",
+          "style": "tiles-wide",
+          "columns": 3,
+          "title": "Mini američke krofnice",
+          "note": "15 kom / 7 kom",
+          "items": [
+            {
+              "name": "Nutela Plazma",
+              "price": "5,20 / 4,00",
+              "weight": "550g / 350g",
+              "img": "k_nutela.png",
+              "id": "8nn57pm",
+              "imgPrint": "k_nutela-print.png"
+            },
+            {
+              "name": "Dupla Čokolada",
+              "price": "5,20 / 4,00",
+              "weight": "550g / 350g",
+              "img": "k_dupla.png",
+              "id": "tt2uy5h",
+              "imgPrint": "k_dupla-print.png"
+            },
+            {
+              "name": "Dubai",
+              "price": "7,00 / 5,80",
+              "weight": "550g / 350g",
+              "img": "k_dubai.png",
+              "id": "4ih77bv",
+              "imgPrint": "k_dubai-print.png"
+            },
+            {
+              "name": "Cherry Dream",
+              "ingr": "Bijela čokolada, nadjev višnja, plazma",
+              "price": "6,10 / 4,90",
+              "weight": "550g / 350g",
+              "img": "k_cherry.png",
+              "id": "8l6v5xi"
+            },
+            {
+              "name": "Kinder Delux",
+              "ingr": "Kinder krem, kinder čokolada, plazma, banana",
+              "price": "6,40 / 5,20",
+              "weight": "550g / 350g",
+              "img": "k_kinder.png",
+              "id": "x3btctb",
+              "imgPrint": "k_kinder-print.png"
+            },
+            {
+              "name": "Pistać Malina",
+              "ingr": "Pistaći, maline, plazma u mlijeku",
+              "price": "6,50 / 5,20",
+              "weight": "550g / 350g",
+              "img": "k_pistac.png",
+              "id": "kytuc29",
+              "imgPrint": "k_pistac-print.png"
+            }
+          ],
+          "id": "f2f3ypb"
+        },
+        {
+          "area": "band",
+          "style": "band",
+          "columns": 4,
+          "title": "Slane Palačinke",
+          "note": "",
+          "items": [
+            {
+              "name": "Klasik",
+              "ingr": "Šunka / kulen / pečenica",
+              "price": "4,70",
+              "weight": "350g",
+              "img": "s_klasik.png",
+              "id": "07jxfkr"
+            },
+            {
+              "name": "Pizza",
+              "ingr": "Sir, šunka, origano, šampinjoni, kečap",
+              "price": "5,00",
+              "weight": "400g",
+              "img": "s_pizza.png",
+              "id": "rljbm5y"
+            },
+            {
+              "name": "Domaćinska",
+              "ingr": "Pršut, sir, kajmak, marinirani šampinjoni",
+              "price": "5,50",
+              "weight": "450g",
+              "img": "s_domac.png",
+              "id": "qp8d21i"
+            },
+            {
+              "name": "Royal",
+              "ingr": "Šunka, kulen, pečenica, sir, pavlaka",
+              "price": "5,80",
+              "weight": "450g",
+              "img": "s_royal.png",
+              "id": "vjfqx9l"
+            }
+          ],
+          "id": "jmss67i"
+        }
+      ]
+    },
+    {
+      "name": "TV 3",
+      "layout": "builder",
+      "title": {
+        "a": "Napravi svoju",
+        "b": "palačinku",
+        "accentFirst": true
+      },
+      "sections": [
+        {
+          "area": "pills",
+          "style": "pills",
+          "title": "Osnova",
+          "items": [
+            {
+              "name": "Mini američke krofnice 15/7 kom",
+              "price": "3,40 / 2,20",
+              "id": "jfa9scd"
+            },
+            {
+              "name": "Pancake",
+              "price": "2,70",
+              "id": "dejkvbq"
+            },
+            {
+              "name": "Puffy pancakes · 15 kom",
+              "price": "3,40",
+              "id": "hafjy4z"
+            }
+          ],
+          "id": "k1p1w0g"
+        },
+        {
+          "area": "cards",
+          "style": "cards",
+          "title": "Dodaci",
+          "cards": [
+            {
+              "title": "Namazi",
+              "weight": "90g",
+              "items": [
+                {
+                  "name": "Nutella",
+                  "price": "1,00",
+                  "id": "7datigj"
+                },
+                {
+                  "name": "Kinder",
+                  "price": "1,00",
+                  "id": "fvj7xys"
+                },
+                {
+                  "name": "Krem",
+                  "price": "0,80",
+                  "id": "du1ps3q"
+                },
+                {
+                  "name": "Euro cream",
+                  "price": "0,90",
+                  "id": "jgrag74"
+                },
+                {
+                  "name": "Pistaći",
+                  "price": "1,20",
+                  "id": "5d5tcs6"
+                },
+                {
+                  "name": "Vanilla puding",
+                  "price": "1,00",
+                  "id": "0j8weyk"
+                },
+                {
+                  "name": "Bijela linolada",
+                  "price": "1,00",
+                  "id": "glmxunu"
+                },
+                {
+                  "name": "Nadjev višnja",
+                  "price": "0,90",
+                  "id": "okp4c9e"
+                },
+                {
+                  "name": "Nadjev jagoda",
+                  "price": "0,90",
+                  "id": "iwnqlli"
+                }
+              ],
+              "id": "ofcdfn7"
+            },
+            {
+              "title": "Voće",
+              "weight": "40g",
+              "items": [
+                {
+                  "name": "Banana",
+                  "price": "0,80",
+                  "id": "nmm1x8u"
+                },
+                {
+                  "name": "Šumsko voće",
+                  "price": "0,80",
+                  "id": "tqdegyt"
+                },
+                {
+                  "name": "Višnja",
+                  "price": "0,90",
+                  "id": "o98pc4k"
+                },
+                {
+                  "name": "Malina",
+                  "price": "1,00",
+                  "id": "7eb24ur"
+                },
+                {
+                  "name": "Jagoda",
+                  "price": "1,00",
+                  "id": "f72o1ue"
+                }
+              ],
+              "id": "05sclzz"
+            },
+            {
+              "title": "Keks",
+              "weight": "40g",
+              "items": [
+                {
+                  "name": "Plazma",
+                  "price": "0,80",
+                  "id": "v0e5zc9"
+                },
+                {
+                  "name": "Plazma u mlijeku",
+                  "price": "1,00",
+                  "id": "jwb8sm1"
+                },
+                {
+                  "name": "Oreo",
+                  "price": "0,80",
+                  "id": "nuucz4f"
+                }
+              ],
+              "id": "mhdg5y7"
+            },
+            {
+              "title": "Prelivi",
+              "weight": "30g",
+              "items": [
+                {
+                  "name": "Čokolada",
+                  "price": "0,80",
+                  "id": "kh2bsxp"
+                },
+                {
+                  "name": "Karamela",
+                  "price": "0,80",
+                  "id": "4gqg6ip"
+                },
+                {
+                  "name": "Šumsko voće",
+                  "price": "0,80",
+                  "id": "gmr16gl"
+                },
+                {
+                  "name": "Crna čokolada",
+                  "price": "0,80",
+                  "id": "vtluh3x"
+                },
+                {
+                  "name": "Bijela čokolada",
+                  "price": "0,80",
+                  "id": "kbn6hj1"
+                }
+              ],
+              "id": "qdqpott"
+            },
+            {
+              "title": "Džemovi",
+              "weight": "90g",
+              "items": [
+                {
+                  "name": "Jagoda",
+                  "price": "0,90",
+                  "id": "qm97lp3"
+                },
+                {
+                  "name": "Šljiva",
+                  "price": "0,90",
+                  "id": "7xwiqzo"
+                },
+                {
+                  "name": "Kajsija",
+                  "price": "0,90",
+                  "id": "24nur91"
+                }
+              ],
+              "id": "u0c8xkn"
+            },
+            {
+              "title": "Ostalo",
+              "weight": "40g",
+              "wide": true,
+              "items": [
+                {
+                  "name": "Šlag",
+                  "price": "0,70",
+                  "id": "0g56r3i"
+                },
+                {
+                  "name": "Čoko mrvice",
+                  "price": "0,70",
+                  "id": "p4aq2b8"
+                },
+                {
+                  "name": "Šarene mrvice",
+                  "price": "0,70",
+                  "id": "rxepn2m"
+                },
+                {
+                  "name": "Točeni sladoled",
+                  "price": "2,00",
+                  "id": "k69upmy"
+                },
+                {
+                  "name": "Kadaif",
+                  "price": "1,00",
+                  "id": "yzj3tuv"
+                },
+                {
+                  "name": "Kornflex",
+                  "price": "0,70",
+                  "id": "jylb5xw"
+                }
+              ],
+              "extra": {
+                "text": "Ice-cream · 100g",
+                "price": "1,20"
+              },
+              "id": "5mixyap"
+            },
+            {
+              "title": "Orašasti plodovi",
+              "weight": "40g",
+              "items": [
+                {
+                  "name": "Lješnik",
+                  "price": "0,70",
+                  "id": "deb6mbm"
+                },
+                {
+                  "name": "Kikiriki",
+                  "price": "0,80",
+                  "id": "zptg1me"
+                },
+                {
+                  "name": "Pistaći",
+                  "price": "1,20",
+                  "id": "xakt4qc"
+                },
+                {
+                  "name": "Kokos",
+                  "price": "0,60",
+                  "id": "zds74t1"
+                },
+                {
+                  "name": "Orah",
+                  "price": "0,50",
+                  "id": "rj4mtbw"
+                },
+                {
+                  "name": "Badem",
+                  "price": "0,80",
+                  "id": "2i41dhc"
+                }
+              ],
+              "id": "zoiypwk"
+            }
+          ],
+          "id": "xh57uun"
+        }
+      ]
+    }
+  ],
+  "tvTheme": "newyear"
+}

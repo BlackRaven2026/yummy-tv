@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="sr-ME">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex, noai, noimageai">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self'; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<title>Yummy TV menu</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+  :root{--bg:#070d22;--card:#111c40;--ink:#f8f4ea;--muted:#b9bfd3;--gold:#f6d27f;--orange:#ff8f1f}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:radial-gradient(1200px 700px at 50% 20%,#14254f,var(--bg));color:var(--ink);
+    font-family:Montserrat,system-ui,sans-serif;display:flex;flex-direction:column;align-items:center;padding:48px 16px}
+  h1{font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(34px,5vw,60px);margin:0;text-transform:uppercase;letter-spacing:1px}
+  h1 span{color:var(--orange)}
+  p{color:var(--muted);max-width:760px;text-align:center;line-height:1.5;margin:14px 0 30px}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,260px));gap:22px;width:100%;justify-content:center}
+  .tv{background:var(--card);border:1px solid rgba(246,210,127,.35);border-radius:20px;padding:22px;text-align:center}
+  .tv h2{font-family:Oswald,sans-serif;font-size:34px;margin:0 0 4px;color:var(--gold)}
+  .tv small{display:block;color:var(--muted);margin-bottom:18px;min-height:40px}
+  a{display:block;margin-top:12px;padding:16px;border-radius:999px;font-weight:700;font-size:20px;text-decoration:none;
+    color:#2a1704;background:linear-gradient(135deg,#fff0c4,#f6cf72 40%,#e8a93d)}
+  a.alt{color:var(--ink);background:transparent;border:2px solid rgba(246,210,127,.55)}
+  a:focus,a:hover{outline:4px solid #fff;outline-offset:3px}
+  a.chosen{box-shadow:0 0 0 4px var(--orange)}
+  #auto{display:none;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center;margin:0 0 30px;padding:18px 26px;
+    border-radius:20px;background:rgba(255,143,31,.12);border:2px solid var(--orange);font-size:22px;font-weight:600;text-align:center}
+  #auto b{color:var(--gold)}
+  #auto button{font:inherit;font-weight:700;font-size:20px;padding:12px 26px;border-radius:999px;border:2px solid var(--gold);
+    background:transparent;color:var(--ink);cursor:pointer}
+  #auto button:focus{outline:4px solid #fff;outline-offset:3px}
+  #clockWarn{display:none;margin:0 0 26px;padding:16px 24px;max-width:760px;border-radius:16px;    background:rgba(196,3,8,.22);border:2px solid #ff6b6b;color:#fff;font-size:20px;line-height:1.4;text-align:center}
+  @media (max-width:820px){.grid{grid-template-columns:minmax(0,340px)}}
+</style>
+</head>
+<body>
+  <h1>Yummy <span>TV meni</span></h1>
+  <p>Izaberite stranicu za ovaj televizor – samo jednom. Ovaj televizor će je zapamtiti i ubuduće je otvarati sam.
+     <b>Live</b> = animacija uživo. <b>Video</b> = isti meni kao video. <b>Slika</b> = mirna slika menija, najlakše za televizor. Daljinski: strelice + OK.</p>
+  <div id="clockWarn"><b>⏰TV sat nije tačan</b><br>Provjerite Date &amp; time → Automatic (internetsko vrijeme) u podešavanjima televizora.
+    Santa i ostale animacije se neće poklapati na TV-ovima dok sat ne bude tačan.</div>
+  <div id="auto"><span>Otvaram <b id="autoName"></b> za <b id="autoSec">8</b> s…</span>
+    <button id="change" type="button">Promijeni izbor</button></div>
+  <div class="grid">
+    <div class="tv"><h2>TV 1</h2><small>Palačinke &amp; Specijaliteti</small>
+      <a href="tv1.html">Live</a><a class="alt" href="tv1-video.html">Video</a><a class="alt" href="tv1-image.html">Slika</a></div>
+    <div class="tv"><h2>TV 2</h2><small>Mini – Palačinke i Krofnice</small>
+      <a href="tv2.html">Live</a><a class="alt" href="tv2-video.html">Video</a><a class="alt" href="tv2-image.html">Slika</a></div>
+    <div class="tv"><h2>TV 3</h2><small>Napravi svoju palačinku</small>
+      <a href="tv3.html">Live</a><a class="alt" href="tv3-video.html">Video</a><a class="alt" href="tv3-image.html">Slika</a></div>
+  </div>
+<script>
+(function () {
+  var KEY = 'yummyTvPage', saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  var links = document.querySelectorAll('.grid a');
+  var NAMES = {"tv1.html":"TV 1 (Live)","tv1-video.html":"TV 1 (Video)","tv1-image.html":"TV 1 (Slika)","tv2.html":"TV 2 (Live)","tv2-video.html":"TV 2 (Video)","tv2-image.html":"TV 2 (Slika)","tv3.html":"TV 3 (Live)","tv3-video.html":"TV 3 (Video)","tv3-image.html":"TV 3 (Slika)"};
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', function () {
+      try { localStorage.setItem(KEY, this.getAttribute('href')); } catch (e) {}
+    });
+    if (links[i].getAttribute('href') === saved) links[i].classList.add('chosen');
+  }
+  var choose = /[?&]izbor\b/.test(location.search);
+  if (!saved || !NAMES[saved] || choose) { links[0].focus(); return; }
+  var box = document.getElementById('auto'), sec = 8, timer;
+  document.getElementById('autoName').textContent = NAMES[saved];
+  box.style.display = 'flex';
+  var btn = document.getElementById('change');
+  btn.focus();
+  function cancel() {
+    clearInterval(timer);
+    box.style.display = 'none';
+    var c = document.querySelector('a.chosen') || links[0];
+    c.focus();
+  }
+  btn.addEventListener('click', cancel);
+  timer = setInterval(function () {
+    sec--;
+    document.getElementById('autoSec').textContent = sec;
+    if (sec <= 0) { clearInterval(timer); location.replace(saved); }
+  }, 1000);
+})();
+</script>
+<script>
+(function () {
+  var W = 5000;
+  function warn(msg) { var b = document.getElementById('clockWarn'); if (!b) return; b.innerHTML = msg; b.style.display = 'block'; }
+  function check() {
+    fetch('version.json?nocache=' + Date.now(), { cache: 'no-store' }).then(function (r) {
+      var d = r.headers.get('Date'); if (!d) return;
+      var diff = Date.now() - Date.parse(d);
+      if (Math.abs(diff) > W) warn("<b>⏰ Sat na ovom TV-u nije tačan (" + Math.round(diff / 1000) + " s</b><br>Uključite Date &amp; time → Automatic (internetsko vrijeme) u podešavanjima televizora.");
+    }).catch(function () {});
+  }
+  check(); setInterval(check, 5 * 60 * 1000);
+})();
+</script>
+</body>
+</html>

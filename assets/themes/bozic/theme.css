@@ -1,0 +1,81 @@
+/* Theme: Božić – Orthodox Christmas (badnjak oak, straw, candles, warm fire) */
+:root{
+  --wine:#5a1416;--wine-d:#2a0809;--gold:#e8b04a;--gold-hi:#ffe2a0;--gold-lo:#b07a22;--cream:#fbefd6;--oak:#7c9a43;--ember:#ff7a2a;
+  --ink:#fbefd6;--line:rgba(232,176,74,.4);--card:rgba(255,220,160,.045);
+  --pad-top:70px;
+  --stage-bg:
+    radial-gradient(1400px 500px at 50% 112%, rgba(255,122,42,.32) 0%, rgba(255,122,42,0) 70%),
+    radial-gradient(1100px 650px at 50% 35%, #6a1a1c 0%, rgba(90,20,22,0) 72%),
+    radial-gradient(800px 500px at 0% 0%, rgba(232,176,74,.08), transparent 70%),
+    linear-gradient(180deg,#3d0e10 0%,#1c0506 100%);
+}
+/* warm fire glow breathing at the bottom (the burning badnjak) */
+.hearth{position:absolute;left:-10%;right:-10%;bottom:-260px;height:520px;z-index:0;pointer-events:none;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,150,60,.30),rgba(255,90,30,.12) 55%,transparent);animation:hearth 3.4s ease-in-out infinite alternate}
+@keyframes hearth{0%{opacity:.75;transform:scale(1)}40%{opacity:1;transform:scale(1.03)}70%{opacity:.85}100%{opacity:1;transform:scale(1.05)}}
+.sweep{position:absolute;z-index:2;top:-200px;left:0;width:260px;height:1480px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,226,160,.05) 45%,rgba(255,226,160,.09) 50%,rgba(255,226,160,.05) 55%,transparent);
+  transform:translateX(-400px) rotate(18deg);animation:sweep 17s cubic-bezier(.45,.05,.55,.95) infinite}
+@keyframes sweep{0%,55%{transform:translateX(-500px) rotate(18deg)}100%{transform:translateX(2300px) rotate(18deg)}}
+
+/* oak (badnjak) garland across the top */
+#oak{position:absolute;left:0;top:0;width:1920px;height:96px;z-index:25;pointer-events:none}
+#oak svg{position:absolute;top:0;right:0;bottom:0;left:0;overflow:visible}
+.leaf{transform-box:fill-box;transform-origin:0 50%;animation:leaf var(--t,4s) ease-in-out var(--d,0s) infinite alternate}
+@keyframes leaf{from{transform:rotate(var(--r0))}to{transform:rotate(var(--r1))}}
+
+/* hanging badnjak bundles / straw stars */
+.hang{position:absolute;top:0;z-index:24;width:0;height:0;pointer-events:none}
+.hang .swing{position:absolute;left:0;top:0;transform-origin:0 0;animation:swing var(--sw,5.5s) ease-in-out var(--sd,0s) infinite alternate}
+.hang .cord{position:absolute;left:-1px;top:0;width:2px;height:var(--len,80px);background:linear-gradient(#b03030,#7a1a1a)}
+.hang svg{position:absolute;left:calc(var(--size,60px) / -2);top:var(--len,80px);width:var(--size,60px);height:var(--size,60px);overflow:visible;
+  filter:drop-shadow(0 6px 10px rgba(0,0,0,.45)) drop-shadow(0 0 12px rgba(255,190,90,.25))}
+@keyframes swing{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+#star{position:absolute;left:0;top:0;z-index:27;pointer-events:none;visibility:hidden;will-change:transform}
+
+/* ---------- text ---------- */
+.t-acc,.t-main{background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 10s linear infinite}
+.t-acc{background-image:linear-gradient(100deg,var(--gold) 0 42%,#fff2c8 48%,#ffffff 50%,#fff2c8 52%,var(--gold) 58% 100%)}
+.t-main{background-image:linear-gradient(100deg,var(--cream) 0 42%,var(--gold) 48%,#fff 50%,var(--gold) 52%,var(--cream) 58% 100%);animation-delay:-.6s}
+@keyframes shine{0%,40%{background-position:100% 0}100%{background-position:0 0}}
+.hline{background:linear-gradient(90deg,transparent,var(--gold) 15%,var(--gold-hi) 50%,var(--gold) 85%,transparent);box-shadow:0 0 14px rgba(232,176,74,.45)}
+.vsep{background:linear-gradient(180deg,transparent,var(--gold) 12%,var(--gold-hi) 50%,var(--gold) 88%,transparent);box-shadow:0 0 12px rgba(232,176,74,.45);opacity:.85}
+
+.greet .script{color:var(--gold);text-shadow:0 0 18px rgba(255,190,90,.5)}
+.greet .year{color:var(--cream)}
+.greet.small{border:1px solid var(--line);background:rgba(42,8,9,.75)}
+
+.name{color:var(--gold);text-shadow:0 2px 10px rgba(255,170,60,.25)}
+.ingr{color:var(--cream)}
+.ingr small{color:var(--gold)}
+.w{color:var(--gold)}
+.price{overflow:hidden;color:#3b0d0e;background:linear-gradient(135deg,#fff0c8 0%,#f0c66a 45%,#d39a35 100%);
+  box-shadow:0 0 0 1px rgba(255,236,190,.6) inset,0 4px 16px rgba(232,150,60,.3)}
+.price::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:40%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:tag 6s ease-in-out var(--pd,0s) infinite}
+@keyframes tag{0%,78%{transform:translateX(0) skewX(-20deg)}100%{transform:translateX(475%) skewX(-20deg)}}
+.s-big .price,.s-band .price{padding:3px 16px 4px}
+
+.dish::before{content:"";position:absolute;left:8%;right:8%;bottom:2%;height:26%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,170,70,.32),transparent);filter:blur(2px)}
+.dish img{filter:drop-shadow(0 10px 14px rgba(0,0,0,.55))}
+
+.panel{border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:0 0 0 1px rgba(255,255,255,.02) inset,0 20px 60px rgba(0,0,0,.3)}
+/* little 8-point golden star */
+.deco{width:.62em;height:.62em;margin-right:12px;background:var(--gold);
+  clip-path:polygon(50% 0,61% 30%,85% 15%,70% 39%,100% 50%,70% 61%,85% 85%,61% 70%,50% 100%,39% 70%,15% 85%,30% 61%,0 50%,30% 39%,15% 15%,39% 30%);
+  filter:drop-shadow(0 0 6px rgba(255,200,100,.8));animation:spin 14s linear infinite}
+.sub{color:var(--cream)}
+.sub b{color:var(--gold)}
+
+.band{background:linear-gradient(180deg,rgba(255,150,60,.10),rgba(255,255,255,.02))}
+.band-h{background:linear-gradient(180deg,#4a1012,#2a0809);border:1px solid var(--line);color:var(--cream)}
+.band-h .acc{color:var(--gold)}
+
+.tag{color:var(--gold)}
+.tag b{color:var(--cream)}
+.logo{filter:drop-shadow(0 0 16px rgba(255,190,90,.35))}
+.contact{background:linear-gradient(135deg,#f0c66a,#d39a35);box-shadow:0 10px 30px rgba(232,150,60,.25);color:#3b0d0e}
+.card li .p{color:var(--gold)}
+.slogan{color:var(--gold);text-shadow:0 0 14px rgba(255,190,90,.4)}
